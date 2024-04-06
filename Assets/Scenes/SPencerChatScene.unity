@@ -563,6 +563,8 @@ MonoBehaviour:
     QueryText: Where am I on the leaderboards?
   - ButtonTitle: Submit utility report
     QueryText: I want to submit a Utility Report
+  - ButtonTitle: View Energy graph
+    QueryText: I want to see my energy usage graph
   Buttonprefab: {fileID: 1260626738125255412, guid: 85440acc2bebb4342a334319134cd92d, type: 3}
   ButtonPrefabParent: {fileID: 1559303501}
   MainChatbot: {fileID: 1315080063}
@@ -617,6 +619,7 @@ MonoBehaviour:
   - Leaderboard
   - Checking up on plant
   - Submitting utility bill reports
+  - View my energy usage graph
   ResponseSimilarityFactor: []
   ActionResponseEvents:
   - m_PersistentCalls:
@@ -677,10 +680,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 878365260}
+        m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
+        m_MethodName: RespondWithGraph
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   challengesManager: {fileID: 6578069}
   HighestString: 
   HighestStringFactor: 0
-  SentenceMatchThreshold: 0.35
+  SentenceMatchThreshold: 0.29
   LeaderboardButtonPrefab: {fileID: 3968270098125338812, guid: 7c997546255020c4881908c38960c471, type: 3}
 --- !u!1 &888659838
 GameObject:

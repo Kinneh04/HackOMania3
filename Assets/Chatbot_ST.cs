@@ -68,19 +68,24 @@ public class Chatbot_ST : MonoBehaviour
         Debug.LogError("Not implemented!");
     }
 
+
+    public void RespondWithGraph()
+    {
+        chatBotMain.SendMessageWithCustomButton("Viewing your energy consumption graph over time helps to see your trends in energy usage! Click the button below to view your energy report graph over time.", LeaderboardButtonPrefab, "View Graph", delegate { CustomNotImplementedException(); });
+    }
     public void RespondWithleaderboard()
     {
-        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Would you like to view the leaderboard?", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); });
     }
 
     public void RespondWithPlantRedirect()
     {
-        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges!", LeaderboardButtonPrefab, "View Plant", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges! Click the button below to go to your plant.", LeaderboardButtonPrefab, "View Plant", delegate { CustomNotImplementedException(); });
     }
 
     public void RespondWithReportSubmission()
     {
-        chatBotMain.SendMessageWithCustomButton("Submitting utility bill reports can help you to manage your energy more effectively and see trends in your energy usage! Would you like to submit a report now?", LeaderboardButtonPrefab, "Submit report", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("Submitting utility bill reports can help you to manage your energy more effectively and see trends in your energy usage! Click the button below to submit a utility bill report now.", LeaderboardButtonPrefab, "Submit report", delegate { CustomNotImplementedException(); });
     }
 
     public bool FindHighestFactor()

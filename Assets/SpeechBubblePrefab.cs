@@ -53,6 +53,6 @@ public class SpeechBubblePrefab : MonoBehaviour
             Text.text += FullSpeech[i];
             yield return new WaitForSeconds(typewriterSpeed);
         }
-        mainChatbot.SendButton.interactable = true;
+        mainChatbot.SendButton.interactable = true; 
     }
 }
