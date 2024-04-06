@@ -57,6 +57,7 @@ public class Chatbot_ST : MonoBehaviour
     public void OnFailure(string s)
     {
         Debug.LogError("Cannot for some reason" + s);
+        chatBotMain.SpeechBubble.SetActive(false);
     }
 
     public void OnReplyWithClosestMatchedArticles()
@@ -157,12 +158,12 @@ public class Chatbot_ST : MonoBehaviour
 
     public void RespondWithSuccessfulEV()
     {
-        chatBotMain.SendMessageWithCustomButton("I have found the nearest charging station for you\n\n" + nearestEVLocation + "\n\n Click the button below to view the trip on google maps", LeaderboardButtonPrefab, "View on map", delegate { OpenMapOnGoogle() ; },GPSSprite);
+        chatBotMain.SendMessageWithCustomButton("I have found the nearest charging station for you\n\n" + nearestEVLocation + "\n\nClick the button below to view the trip on google maps", LeaderboardButtonPrefab, "View on map", delegate { OpenMapOnGoogle() ; },GPSSprite);
     }
 
     public void RespondWithReportSubmission()
     {
-        chatBotMain.SendMessageWithCustomButton("Submitting utility bill reports can help you to manage your energy more effectively and see trends in your energy usage! Click the button below to submit a utility bill report now.", LeaderboardButtonPrefab, "Submit report", delegate { CustomNotImplementedException(); }, ReportSprite);
+        chatBotMain.SendMessageWithCustomButton("Linking your utilies can allow you to trends in your energy usage and save more energy! Click the button below to link your utilities now.", LeaderboardButtonPrefab, "Link Utilities", delegate { chatBotMain.GoToUtilities(); }, ReportSprite);
     }
 
     public bool FindHighestFactor()

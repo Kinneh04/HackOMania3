@@ -42,7 +42,18 @@ public class Chatbot : MonoBehaviour
 
     public Button SendButton;
 
-    private void Start()
+    [Header("ImplementationsToUI")]
+    public GameObject ChatbotUI;
+    public GameObject UtilitiesUI;
+    public GameObject SpeechBubble;
+
+    public void GoToUtilities()
+    {
+        ChatbotUI.SetActive(false);
+        UtilitiesUI.SetActive(true);
+    }
+
+    private void Awake()
     {
         GreetUser();
     }
@@ -67,6 +78,7 @@ public class Chatbot : MonoBehaviour
     public List<string> PastSuccessfulInputs, PastSuccessfulGenerations = new();
     public void OnClickSendMessage()
     {
+        SpeechBubble.SetActive(true);
         if (string.IsNullOrEmpty(TextInputfield.text)) return;
         ContextedText = Context + InputHeader + TextInputfield.text + InputCloser + Seperator;
         
@@ -87,6 +99,7 @@ public class Chatbot : MonoBehaviour
             // Respond Normally;
             HuggingFaceAPI.TextGeneration(ContextedText, OnSendMessageSuccess, OnSendMessageFailure);
         }
+        SpeechBubble.SetActive(false);
     }
 
     public void OnSendMessageSuccess(string response)
