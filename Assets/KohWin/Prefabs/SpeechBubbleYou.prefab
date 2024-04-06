@@ -370,5 +370,6 @@ MonoBehaviour:
     NameOfChallenge: 
     ChallengeSprite: {fileID: 0}
     ChallengeDescription: 
+    rewardForCompletion: 0
     KeywordTokens: []
   mainChatbot: {fileID: 0}

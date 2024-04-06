@@ -137,6 +137,12 @@ MonoBehaviour:
   btn: {fileID: 5745595712846812551}
   text: {fileID: 8711046217336707045}
   Icon: {fileID: 5702646546667348521}
+  HeldChallenge:
+    NameOfChallenge: 
+    ChallengeSprite: {fileID: 0}
+    ChallengeDescription: 
+    rewardForCompletion: 0
+    KeywordTokens: []
 --- !u!1 &5736341829442068761
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 66.1669, y: 0}
+  m_AnchoredPosition: {x: 35.71, y: 0}
   m_SizeDelta: {x: 0, y: 19.8937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4473152233759959475

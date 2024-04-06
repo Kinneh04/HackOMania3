@@ -11,4 +11,6 @@ public class CustomResponseButton : MonoBehaviour
     public TMP_Text text;
 
     public Image Icon;
+
+    public Challenge HeldChallenge;
 }

@@ -171,6 +171,7 @@ MonoBehaviour:
   - NameOfChallenge: Orange Peel challenge
     ChallengeSprite: {fileID: 21300000, guid: 0b354135165c3a340895f9c946f71121, type: 3}
     ChallengeDescription: 
+    rewardForCompletion: 10
     KeywordTokens:
     - Orange
     - Orange Peel
@@ -179,13 +180,123 @@ MonoBehaviour:
   - NameOfChallenge: Egg Carton Challenge
     ChallengeSprite: {fileID: 21300000, guid: edbcc3449a3a3c844afd338d55a736e4, type: 3}
     ChallengeDescription: 
+    rewardForCompletion: 10
     KeywordTokens:
     - Eggs
     - Egg carton
     - Carton
     - Egg
+  Articles:
+  - NameOfChallenge: "Kia\u2019s latest EV models tell a story of brand transformation."
+    ChallengeSprite: {fileID: 21300000, guid: 9717b155d6cff09499c8125253f53c58, type: 3}
+    ChallengeDescription: "When Kia unveiled its transformation from a traditional
+      automaker to a sustainable mobility solutions provider in 2020, few foresaw
+      the impact this direction, dubbed Plan S, would have on the latest electric
+      vehicles (EVs) from the Korean giant.\r\n\r\nNow, at the Bangkok International
+      Motor Show (BIMS) running Mar 27 to Apr 7, the Kia EV5 makes its ASEAN debut,
+      joining its larger counterpart, the EV9, which premiered earlier at the Singapore
+      Motorshow in January.\r\n\r\nWith its inaugural appearance at BIMS, Kia presents
+      a visionary concept booth titled Windows of Inspiration, offering visitors
+      a multi-sensory experience. Massive digital screens within this dynamic space
+      shift and evolve, presenting boundless creative possibilities. With its modular
+      and fluid nature, Windows of Inspiration redefines our interaction with environments,
+      and showcases Kia\u2019s commitment to innovation and creativity."
+    rewardForCompletion: 0
+    KeywordTokens:
+    - Kia
+    - Sustainability
+    - Asean
+    - car
+    - vehicle
+    - creative
+  - NameOfChallenge: Singapore has seen less plastic bag usage. Why not the same
+      for food containers?
+    ChallengeSprite: {fileID: 21300000, guid: 015d80e7abc17f04187e83e828976e68, type: 3}
+    ChallengeDescription: 'Over the past few years, there has been growing consciousness
+      about the environmental impact of single-use packaging, including carrier bags,
+      food containers and utensils.
+
+      
+
+      Yet we still use large amounts
+      of disposables, particularly when we get takeaway food and drinks. In 2020,
+      200,000 tonnes of disposable items were thrown away, equivalent in scale to
+      4,000 HDB flats.
+
+      
+
+      The mandatory 5-cent charge for disposable
+      carrier bags, implemented in July 2023, has reduced plastic bag usage by up
+      to 80 per cent across Singapore supermarkets. However, efforts to promote Bring-Your-Own
+      (BYO) culture for food containers and cutlery have seen limited results.
+
+      
+
+      In
+      2021, non-governmental organisation Zero Waste Singapore partnered with five
+      hawker centres to launch a campaign promoting BYO to patrons. The campaign
+      emphasised cost savings and benefits to the environment and hawkers, but only
+      about 5 per cent of customers brought their own containers to "dabao" or take
+      away food.'
+    rewardForCompletion: 0
+    KeywordTokens:
+    - Food
+    - Sustainability
+    - Singapore
+    - Plastic
+    - Climate
+    - Money
+  - NameOfChallenge: "Amid all the climate gloom, let\u2019s not ignore the good
+      news"
+    ChallengeSprite: {fileID: 21300000, guid: 49438230ce2077d4e9e07a12d8a78618, type: 3}
+    ChallengeDescription: "It\u2019s easy to become overwhelmed by the seemingly
+      relentless onslaught of disturbing news about the world\u2019s deepening climate
+      crisis.\r\n\r\nLast year was by far the hottest on record, bringing with it
+      a catalogue of devastating storms, floods, droughts and heatwaves. And the
+      worrying trend of unusual heat has continued into this year.\r\n\r\nMeanwhile,
+      the amount of greenhouse gas emissions humans are releasing into the atmosphere
+      keeps going up, not down.\r\n\r\nWhat\u2019s more, elections in major economies
+      around the world are creating heightened uncertainty about energy and climate
+      policies. But amid all this, it\u2019s important also to pay attention to the
+      good news - the areas where real progress is being made that can still enable
+      us to avoid the most severe effects of climate change.\r\n\r\nNowhere is this
+      clearer than in clean energy, where technologies like solar, wind and electric
+      cars are increasingly replacing the need for fossil fuels and reining in emissions."
+    rewardForCompletion: 0
+    KeywordTokens:
+    - Paris
+    - Sustainability
+    - Good
+    - Singapore
+    - Climate
+  - NameOfChallenge: Why impose a sustainable aviation fuel levy on passengers flying
+      from Singapore?
+    ChallengeSprite: {fileID: 21300000, guid: 396f509099c313c4b8dc0187428da0a3, type: 3}
+    ChallengeDescription: "Starting in 2026, the levy will be set to target for 1
+      per cent of the aviation fuel used in Singapore to be SAF. Thereafter, CAAS
+      aims to raise the SAF target to 3 to 5 per cent by 2030.\r\n\r\nCAAS anticipates
+      that an economy class passenger on a direct flight from Singapore to Bangkok,
+      Tokyo and London to be S$3, S$6 and S$16 respectively. While the levy will
+      remain constant in any year even with fluctuations in the actual price of SAF,
+      it will vary according to the distance travelled and class of travel. Given
+      that premium class passengers take up more space and make the plane less fuel-efficient,
+      they will pay higher levies.\r\n\r\nThe reaction to CAAS\u2019s announcement
+      has been mixed. Some netizens have complained about having to pay more to travel.
+      Others are concerned that the money will simply go into a private company\u2019s
+      profits.\r\n\r\nOn the other hand, some netizens see the levy as a positive
+      step, understanding the need to pay more for sustainable alternatives. Inevitably,
+      introducing a green tax is unlikely to be popular, but there are reasons for
+      it."
+    rewardForCompletion: 0
+    KeywordTokens:
+    - Travel
+    - Sustainability
+    - Planes
+    - Singapore
+    - Climate
   strings: []
   QueriedChallenges: []
+  QueriedArticles: []
 --- !u!1 &219430328
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +882,7 @@ MonoBehaviour:
   - Submitting utility bill reports
   - View my energy usage graph
   - Find nearest Electronic Vehicle Charging Station
+  - Suggesting articles about a certain topic
   ResponseSimilarityFactor: []
   ActionResponseEvents:
   - m_PersistentCalls:
@@ -850,6 +962,20 @@ MonoBehaviour:
       - m_Target: {fileID: 878365260}
         m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
         m_MethodName: SearchForNearestChargingStation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 878365260}
+        m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
+        m_MethodName: OnReplyWithClosestMatchedArticles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1579,6 +1705,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033528982}
   m_CullTransparentMesh: 1
+--- !u!1 &1189344654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189344656}
+  - component: {fileID: 1189344655}
+  m_Layer: 0
+  m_Name: MOD_Chatbot_SU
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1189344655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189344654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4d5036899d753479cd9d486e94e98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Context: 'Context: You are an article summarizer. Your job is to shorten the input
+    into a paragraph no more than 50 words. No matter what, your summary can be no
+    more than 50 words, and cannot end abruptly. You cannot use emojis or other unicode
+    symbols.'
+  FailedToGenerateText: 
+  mainChatbot: {fileID: 1315080063}
+--- !u!4 &1189344656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189344654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1315080062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315080061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,6 +1787,7 @@ Transform:
   m_Children:
   - {fileID: 878365259}
   - {fileID: 2124873118}
+  - {fileID: 1189344656}
   m_Father: {fileID: 778704623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1315080063
@@ -1625,18 +1802,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515ec39ae04680d4f90e5a9f1fe59046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Context: 'Context: You are a mascot for an app designed to help youths save energy
-    by answering their questions about sustainability around singapore. Your name
-    is "SPencer", "SP" for short. Maintain a friendly tone. If the user asks anything
-    not related to energy saving or sustainability, decline to answer. Your answers
-    can never cut off, reply in very short and sweet sentences. You are not allowed
-    to use unicode symbols or hashtags'
+  Context: 'Context: You are a mascot for an app designed to help youths save energy.
+    Your name is "SPencer". Maintain a friendly tone. If the user asks anything not
+    related to energy saving or sustainability, kindly steer the topic back to sustainability.
+    Your answers can never cut off, and you must reply in short sentences. You do
+    not have to mention yourself unless asked. You are not allowed to use unicode
+    symbols, emojis or hashtags. Always speak in the first person.'
   FailedToGenerateText: 
   InputHeader: '[INST]'
   InputCloser: '[/INST]'
   Seperator: '{NL}'
-  GreetingsMessage: Hello, SPencer here. How may I assist your sustainability journey
+  GreetingsMessage: 'Hello, SPencer here. How may I assist your sustainability journey
     today?
+
+
+    I can help you find the perfect challenges, answer your questions
+    about sustainability, or even plan your next trip in your electric vehicle!'
   TextInputfield: {fileID: 1603399965}
   currentResponse: 
   temptext: 
@@ -1646,8 +1827,12 @@ MonoBehaviour:
   ResponseChallengePrefab: {fileID: 6344567190697827741, guid: 566be90d003d9314e94f4a7761e217d0, type: 3}
   SpeechBubblesParent: {fileID: 1609933486}
   InstantiatedTextboxes: []
+  ImageWithButtonprefab: {fileID: 4478952530066993790, guid: e865e0fb5b8f17f4eb98d5219fbfd35b, type: 3}
+  CustomButtonPrefab: {fileID: 3968270098125338812, guid: 7c997546255020c4881908c38960c471, type: 3}
+  SummarizeArticleIconSprite: {fileID: 21300000, guid: a98468fb877209c4bb998e0c7c0c1d62, type: 3}
   CBM_SentenceTransform: {fileID: 878365260}
   CBM_AutoTokenizer: {fileID: 2124873119}
+  CBM_Summarizer: {fileID: 1189344655}
   SendButton: {fileID: 2131101313}
   PastSuccessfulInputs: []
   PastSuccessfulGenerations: []
@@ -2216,8 +2401,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5039209312772569962}
+  m_Children: []
   m_Father: {fileID: 2110111795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3689,376 +3873,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139450488}
   m_CullTransparentMesh: 1
---- !u!114 &298308225186820857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340481696396615290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e37a55943a813349a6c60ffbd662dec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text: {fileID: 2883501721330177076}
-  FullSpeech: 
-  typewrite: 0
-  BubbleCustomButtonprefabParent: {fileID: 0}
-  image: {fileID: 0}
-  typewriterSpeed: 0.02
-  SavedChallenge:
-    NameOfChallenge: 
-    ChallengeSprite: {fileID: 0}
-    ChallengeDescription: 
-    KeywordTokens: []
-  mainChatbot: {fileID: 0}
---- !u!1 &340481696396615290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5039209312772569962}
-  - component: {fileID: 9030839962369669191}
-  - component: {fileID: 7442499707279233445}
-  - component: {fileID: 298308225186820857}
-  m_Layer: 5
-  m_Name: SpeechBubbleBot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &428193619258286690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2462146729636746728}
-  - component: {fileID: 2339428045677123575}
-  - component: {fileID: 2883501721330177076}
-  - component: {fileID: 2588900247347767723}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!222 &2339428045677123575
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428193619258286690}
-  m_CullTransparentMesh: 1
---- !u!224 &2462146729636746728
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428193619258286690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7704411022874665536}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.82, y: -34.255}
-  m_SizeDelta: {x: 189.64, y: 68.51}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2588900247347767723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428193619258286690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
---- !u!1 &2818670946578764718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7704411022874665536}
-  - component: {fileID: 6826340053969026758}
-  - component: {fileID: 6780837935157857933}
-  - component: {fileID: 3658737653247085906}
-  - component: {fileID: 3540454463161874140}
-  m_Layer: 5
-  m_Name: SpeechBubble
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2883501721330177076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428193619258286690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: kbakwdhahkdbkhadkhkhbwkdbkawbkjdawkdbawbdawkbdjkawjkdbjalwlkjdbjkabdjkbawkdbka
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3540454463161874140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818670946578764718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
---- !u!114 &3658737653247085906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818670946578764718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
---- !u!224 &5039209312772569962
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340481696396615290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7704411022874665536}
-  m_Father: {fileID: 1609933486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 158.4835, y: -516.813}
-  m_SizeDelta: {x: 329.874, y: 68.51}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6780837935157857933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818670946578764718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &6826340053969026758
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818670946578764718}
-  m_CullTransparentMesh: 1
---- !u!114 &7442499707279233445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340481696396615290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
---- !u!224 &7704411022874665536
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818670946578764718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2462146729636746728}
-  m_Father: {fileID: 5039209312772569962}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.8215, y: -34.255}
-  m_SizeDelta: {x: 189.643, y: 68.51}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9030839962369669191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340481696396615290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

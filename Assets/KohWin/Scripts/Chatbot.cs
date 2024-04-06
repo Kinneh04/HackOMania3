@@ -10,7 +10,7 @@ public class Chatbot : MonoBehaviour
 {
 
     [Header("Context and conditioning")]
-    [TextArea(5,5)]
+    [TextArea(15,15)]
     public string Context, FailedToGenerateText;
     [TextArea(2, 3)]
     public string InputHeader, InputCloser, Seperator;
@@ -30,9 +30,15 @@ public class Chatbot : MonoBehaviour
 
     public List<GameObject> InstantiatedTextboxes = new();
 
-    [Header("ModularChatbotFuncs")]
+    [Header("Adding Images to responses")]
+    public GameObject ImageWithButtonprefab;
+    public GameObject CustomButtonPrefab;
+    public Sprite SummarizeArticleIconSprite;
+
+[Header("ModularChatbotFuncs")]
     public Chatbot_ST CBM_SentenceTransform;
     public Chatbot_AT CBM_AutoTokenizer;
+    public Chatbot_SU CBM_Summarizer;
 
     public Button SendButton;
 
@@ -132,6 +138,21 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.OnDisplaySpeech(s);
     }
 
+    public void SendMultipleArticles(List<Challenge> Cs)
+    {
+        StartCoroutine(SendMultipleArticlesCoroutine(Cs));
+    }
+
+    IEnumerator SendMultipleArticlesCoroutine(List<Challenge> Cs)
+    {
+       for(int i = 0; i < 3; i++) {
+            if (Cs.Count <= i) yield break;
+            Challenge c = Cs[i];
+            SendArticleWithSummarizeButton(c.NameOfChallenge, CustomButtonPrefab, c, SummarizeArticleIconSprite);
+            yield return new WaitForSeconds(1.5f);
+        }  
+    }
+
 
     public void SendChallengeRecommendations(string s, Challenge C)
     {
@@ -156,6 +177,41 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.typewrite = true;
         BubblePrefab.mainChatbot = this;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+    }
+
+    public void SummarizeArticle(Challenge C)
+    {
+        SendBotMessage("Summarizing article...");
+        CBM_Summarizer.Summarize(C.ChallengeDescription);
+    }
+
+    public void GoToArticle(Challenge C)
+    {
+        
+    }
+
+    public void SendArticleWithSummarizeButton(string title, GameObject Buttonprefab, Challenge C, Sprite iconSprite)
+    {
+        GameObject GO = GameObject.Instantiate(ResponsePrefab);
+        GameObject GOprefab = GameObject.Instantiate(Buttonprefab);
+        GameObject GOImageButton = GameObject.Instantiate(ImageWithButtonprefab);
+        InstantiatedTextboxes.Add(GO);
+        GO.transform.SetParent(SpeechBubblesParent, false);
+        SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
+        GOprefab.transform.SetParent(BubblePrefab.BubbleCustomButtonprefabParent, false);
+        GOImageButton.transform.SetParent(BubblePrefab.BubbleCustomButtonprefabParent, false);
+        CustomResponseButton responseButton = GOprefab.GetComponent<CustomResponseButton>();
+        GOImageButton.GetComponent<Image>().sprite = C.ChallengeSprite;
+        responseButton.HeldChallenge = C;
+        GOImageButton.GetComponent<Button>().onClick.AddListener(delegate { GoToArticle(responseButton.HeldChallenge); });
+        responseButton.btn.onClick.AddListener(delegate { SummarizeArticle(responseButton.HeldChallenge); });
+        responseButton.Icon.sprite = iconSprite;
+        GOImageButton.transform.SetAsLastSibling();
+        GOprefab.transform.SetAsLastSibling();
+        BubblePrefab.mainChatbot = this;
+        BubblePrefab.typewrite = true;
+        BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(title));
+        responseButton.text.text = "Summarize Article";
     }
 
     public void SendMessageWithCustomButton(string s, GameObject Buttonprefab, string buttonName, UnityAction action, Sprite iconSprite = null)

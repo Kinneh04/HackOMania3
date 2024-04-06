@@ -59,6 +59,24 @@ public class Chatbot_ST : MonoBehaviour
         Debug.LogError("Cannot for some reason" + s);
     }
 
+    public void OnReplyWithClosestMatchedArticles()
+    {
+        challengesManager.ReturnMatchedArticles(chatBotMain.temptext);
+        if (challengesManager.QueriedChallenges.Count <= 0)
+        {
+            chatBotMain.SendBotMessage("Sorry, I couldnt find any articles that match what you are looking for. Please try a different topic, or try again later.");
+        }
+        else
+        {
+
+
+            string responseText = "Here is a list of articles that you might find interesting!\nClick the picture to view the article. Remember, you gain leaves for completing a quiz after viewing the article, or you can ask me to summarize the article for you!";
+            chatBotMain.SendBotMessage(responseText);
+
+            chatBotMain.SendMultipleArticles(challengesManager.QueriedChallenges);
+        }
+    }
+
     public void OnReplyWithClosestChallenge()
     {
         challengesManager.ReturnMatchedChallenges(chatBotMain.temptext);

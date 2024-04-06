@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -324,7 +324,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -363,10 +363,11 @@ MonoBehaviour:
   typewrite: 0
   BubbleCustomButtonprefabParent: {fileID: 369412644474807693}
   image: {fileID: 0}
-  typewriterSpeed: 0.02
+  typewriterSpeed: 0.015
   SavedChallenge:
     NameOfChallenge: 
     ChallengeSprite: {fileID: 0}
     ChallengeDescription: 
+    rewardForCompletion: 0
     KeywordTokens: []
   mainChatbot: {fileID: 0}

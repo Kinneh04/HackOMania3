@@ -6,10 +6,13 @@ public class ChallengesManager : MonoBehaviour
 
     [Header("Variables")]
     public List<Challenge> Challenges = new();
+    public List<Challenge> Articles = new();
 
     [Header("Query")]
     public List<string> strings = new();
-    public List<Challenge> QueriedChallenges = new();
+    public List<Challenge> QueriedChallenges, QueriedArticles = new();
+
+
 
     public List<Challenge> FindChallengesWithContext(List<string> Context)
     {
@@ -30,6 +33,27 @@ public class ChallengesManager : MonoBehaviour
         }
 
         return matchedChallenges;
+    }
+
+    public void ReturnMatchedArticles(string response)
+    {
+        response = response.ToLower();
+        QueriedArticles.Clear();
+        strings.Clear();
+        foreach (Challenge C in Articles)
+        {
+            foreach (string s in C.KeywordTokens)
+            {
+                string ss = s.ToLower();
+
+                if (response.Contains(ss))
+                {
+                    strings.Add(s);
+                    QueriedChallenges.Add(C);
+                    break;
+                }
+            }
+        }
     }
 
     public void ReturnMatchedChallenges(string response)
