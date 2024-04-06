@@ -35,7 +35,7 @@ public class Chatbot : MonoBehaviour
     public GameObject CustomButtonPrefab;
     public Sprite SummarizeArticleIconSprite;
 
-[Header("ModularChatbotFuncs")]
+    [Header("ModularChatbotFuncs")]
     public Chatbot_ST CBM_SentenceTransform;
     public Chatbot_AT CBM_AutoTokenizer;
     public Chatbot_SU CBM_Summarizer;
@@ -46,6 +46,11 @@ public class Chatbot : MonoBehaviour
     public GameObject ChatbotUI;
     public GameObject UtilitiesUI;
     public GameObject SpeechBubble;
+
+    public Image SPencerSprite;
+    public Sprite ThinkingSprite;
+    public Sprite IdleSprite;
+
 
     public void GoToUtilities()
     {
@@ -78,11 +83,11 @@ public class Chatbot : MonoBehaviour
     public List<string> PastSuccessfulInputs, PastSuccessfulGenerations = new();
     public void OnClickSendMessage()
     {
-        SpeechBubble.SetActive(true);
         if (string.IsNullOrEmpty(TextInputfield.text)) return;
         ContextedText = Context + InputHeader + TextInputfield.text + InputCloser + Seperator;
         
         temptext = TextInputfield.text;
+        CHangeSPencerToThinking();
         SendYourMessage(temptext);
 
         CBM_SentenceTransform.OnApply(temptext);
@@ -99,7 +104,6 @@ public class Chatbot : MonoBehaviour
             // Respond Normally;
             HuggingFaceAPI.TextGeneration(ContextedText, OnSendMessageSuccess, OnSendMessageFailure);
         }
-        SpeechBubble.SetActive(false);
     }
 
     public void OnSendMessageSuccess(string response)
@@ -149,6 +153,8 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.typewrite = false;
         BubblePrefab.mainChatbot = this;
         BubblePrefab.OnDisplaySpeech(s);
+
+        BubblePrefab.FinishSpeech.AddListener(() => { CHangeSPencerToIdle(); });
     }
 
     public void SendMultipleArticles(List<Challenge> Cs)
@@ -179,6 +185,7 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+        BubblePrefab.FinishSpeech.AddListener(() => { CHangeSPencerToIdle(); });
     }
 
     public void SendBotMessage(string s)
@@ -190,6 +197,19 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.typewrite = true;
         BubblePrefab.mainChatbot = this;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+        BubblePrefab.FinishSpeech.AddListener(() => { CHangeSPencerToIdle(); });
+    }
+
+    public void CHangeSPencerToIdle()
+    {
+        SpeechBubble.SetActive(false);
+        SPencerSprite.sprite = IdleSprite;
+    }
+
+    public void CHangeSPencerToThinking()
+    {
+        SpeechBubble.SetActive(true);
+        SPencerSprite.sprite = ThinkingSprite;
     }
 
     public void SummarizeArticle(Challenge C)
@@ -224,7 +244,11 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(title));
+        BubblePrefab.FinishSpeech.AddListener(() => { CHangeSPencerToIdle(); });
+
         responseButton.text.text = "Summarize Article";
+
+        CHangeSPencerToThinking();
     }
 
     public void SendMessageWithCustomButton(string s, GameObject Buttonprefab, string buttonName, UnityAction action, Sprite iconSprite = null)
@@ -244,7 +268,11 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+        BubblePrefab.FinishSpeech.AddListener(() => { CHangeSPencerToIdle(); });
+
         responseButton.text.text = buttonName;
+
+        CHangeSPencerToThinking();
     }
 }
 

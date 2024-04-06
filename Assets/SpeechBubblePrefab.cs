@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.Events;
 
 public class SpeechBubblePrefab : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SpeechBubblePrefab : MonoBehaviour
     public Transform BubbleCustomButtonprefabParent;
 
     public Image image;
+    public UnityEvent FinishSpeech;
 
     [Header("TypewriterSettings")]
     public float typewriterSpeed = 0.02f;
@@ -53,6 +55,7 @@ public class SpeechBubblePrefab : MonoBehaviour
             Text.text += FullSpeech[i];
             yield return new WaitForSeconds(typewriterSpeed);
         }
+        FinishSpeech.Invoke();
         mainChatbot.SendButton.interactable = true; 
     }
 }
