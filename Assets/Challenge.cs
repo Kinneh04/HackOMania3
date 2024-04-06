@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Challenge : MonoBehaviour
+[System.Serializable]
+public class Challenge
 {
     [Header("MainVariables")]
     public string NameOfChallenge;

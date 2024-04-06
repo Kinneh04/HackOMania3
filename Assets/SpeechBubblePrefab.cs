@@ -9,13 +9,21 @@ public class SpeechBubblePrefab : MonoBehaviour
     public string FullSpeech;
     public bool typewrite = false;
 
+    public Image image;
+
     [Header("TypewriterSettings")]
     public float typewriterSpeed = 0.02f;
 
     private Coroutine typewriterCoroutine;
 
+    public Challenge SavedChallenge;
+    public void RedirectToChallenge()
+    {
+        // Redirect to challenge page, closing the bot.;
+    }
 
-    public void OnDisplaySpeech(string s)
+
+    public void OnDisplaySpeech(string s, Sprite image = null)
     {
         FullSpeech = s;
         if (typewrite)

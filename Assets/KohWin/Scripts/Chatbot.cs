@@ -18,9 +18,9 @@ public class Chatbot : MonoBehaviour
     public TMP_InputField TextInputfield;
 
     [Header("Response Management")]
-    private string currentResponse;
-    private string temptext, ContextedText;
-    public GameObject ResponsePrefab, YourMessagePrefab;
+    public string currentResponse;
+    public string temptext, ContextedText;
+    public GameObject ResponsePrefab, YourMessagePrefab, ResponseChallengePrefab;
     public Transform SpeechBubblesParent;
 
     [Header("ModularChatbotFuncs")]
@@ -64,6 +64,7 @@ public class Chatbot : MonoBehaviour
 
     public string ExtractStringAfterSeparator(string s)
     {
+        if (!s.Contains(Seperator)) return s;
         int separatorIndex = s.IndexOf(Seperator);
 
         // Check if the separator was found
@@ -90,7 +91,18 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.OnDisplaySpeech(s);
     }
 
-    public void SendBotMessage(string s, LinkedImage LI = null)
+    public void SendChallengeRecommendations(string s, Challenge C)
+    {
+        GameObject GO = GameObject.Instantiate(ResponseChallengePrefab);
+        GO.transform.SetParent(SpeechBubblesParent, false);
+        SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
+        BubblePrefab.image.sprite = C.ChallengeSprite;
+        BubblePrefab.SavedChallenge = C;
+        BubblePrefab.typewrite = true;
+        BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+    }
+
+    public void SendBotMessage(string s)
     {
         GameObject GO = GameObject.Instantiate(ResponsePrefab);
         GO.transform.SetParent(SpeechBubblesParent, false);
@@ -100,7 +112,3 @@ public class Chatbot : MonoBehaviour
     }
 }
 
-public class LinkedImage
-{
-
-}

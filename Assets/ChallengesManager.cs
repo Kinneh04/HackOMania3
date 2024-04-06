@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,13 +34,16 @@ public class ChallengesManager : MonoBehaviour
 
     public void ReturnMatchedChallenges(string response)
     {
+        response = response.ToLower();
         QueriedChallenges.Clear();
         strings.Clear();
-        foreach(Challenge C in Challenges)
+        foreach (Challenge C in Challenges)
         {
-            foreach(string s in C.KeywordTokens)
+            foreach (string s in C.KeywordTokens)
             {
-                if(response.Contains(s))
+                string ss = s.ToLower();
+                
+                if (response.Contains(ss))
                 {
                     strings.Add(s);
                     QueriedChallenges.Add(C);

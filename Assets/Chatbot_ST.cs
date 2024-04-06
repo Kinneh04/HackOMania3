@@ -12,8 +12,10 @@ public class Chatbot_ST : MonoBehaviour
 
     public string[] Actions;
     public float[] ResponseSimilarityFactor;
-    public string[] ActionResponses;
+   // public string[] ActionResponses;
     public UnityEvent[] ActionResponseEvents;
+
+    public ChallengesManager challengesManager;
 
     //God forgive me 
     //ResponseSimilarityFactor is from 0 to 1. find the highest in the array, and correlate it to the string in Actions[]
@@ -39,6 +41,23 @@ public class Chatbot_ST : MonoBehaviour
     public void OnFailure(string s)
     {
         Debug.LogError("Cannot for some reason" + s);
+    }
+
+    public void OnReplyWithClosestChallenge()
+    {
+        challengesManager.ReturnMatchedChallenges(chatBotMain.temptext);
+        if (challengesManager.QueriedChallenges.Count <= 0)
+        {
+            chatBotMain.SendBotMessage("Sorry, there seems to be no challenges today that utilize those items, try using different keywords when searching for events.");
+        }
+        else
+        {
+
+
+            string responseText = "Here is an event that matches what you might be looking for! \n" + challengesManager.QueriedChallenges[0].NameOfChallenge;
+            chatBotMain.SendChallengeRecommendations(responseText, challengesManager.QueriedChallenges[0]);
+        }
+
     }
 
     public bool FindHighestFactor()
@@ -70,6 +89,10 @@ public class Chatbot_ST : MonoBehaviour
 
             HighestStringFactor = highestValue;
             HighestString = Actions[highestIndex];
+
+            if (highestIndex == 0) return false;
+            ActionResponseEvents[highestIndex].Invoke();
+
             return true;
         }
         return false;
