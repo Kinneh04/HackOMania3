@@ -14,6 +14,9 @@ public class Chatbot : MonoBehaviour
     public string Context, FailedToGenerateText;
     [TextArea(2, 3)]
     public string InputHeader, InputCloser, Seperator;
+
+    [TextArea(5, 5)]
+    public string GreetingsMessage;
     //I have a string var s that i want to get whatever is after the seperator var.
 
     [Header("Variables")]
@@ -25,11 +28,32 @@ public class Chatbot : MonoBehaviour
     public GameObject ResponsePrefab, YourMessagePrefab, ResponseChallengePrefab;
     public Transform SpeechBubblesParent;
 
+    public List<GameObject> InstantiatedTextboxes = new();
+
     [Header("ModularChatbotFuncs")]
     public Chatbot_ST CBM_SentenceTransform;
     public Chatbot_AT CBM_AutoTokenizer;
 
-   
+    private void Start()
+    {
+        GreetUser();
+    }
+
+    public void ClearAndResetChat()
+    {
+        foreach(GameObject GO in InstantiatedTextboxes)
+        {
+            Destroy(GO);
+        }
+
+        InstantiatedTextboxes.Clear();
+        GreetUser();
+    }
+
+    public void GreetUser()
+    {
+        SendBotMessage(GreetingsMessage);
+    }
 
 
     public List<string> PastSuccessfulInputs, PastSuccessfulGenerations = new();
@@ -92,6 +116,7 @@ public class Chatbot : MonoBehaviour
     {
         GameObject GO = GameObject.Instantiate(YourMessagePrefab);
         GO.transform.SetParent(SpeechBubblesParent, false);
+        InstantiatedTextboxes.Add(GO);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         BubblePrefab.typewrite = false;
         BubblePrefab.OnDisplaySpeech(s);
@@ -103,6 +128,8 @@ public class Chatbot : MonoBehaviour
         GO.transform.SetParent(SpeechBubblesParent, false);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         BubblePrefab.image.sprite = C.ChallengeSprite;
+        InstantiatedTextboxes.Add(GO);
+        BubblePrefab.image.GetComponent<Button>().onClick.AddListener(delegate { BubblePrefab.RedirectToChallenge(); });
         BubblePrefab.SavedChallenge = C;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
@@ -112,6 +139,7 @@ public class Chatbot : MonoBehaviour
     {
         GameObject GO = GameObject.Instantiate(ResponsePrefab);
         GO.transform.SetParent(SpeechBubblesParent, false);
+        InstantiatedTextboxes.Add(GO);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
@@ -121,7 +149,7 @@ public class Chatbot : MonoBehaviour
     {
         GameObject GO = GameObject.Instantiate(ResponsePrefab);
         GameObject GOprefab = GameObject.Instantiate(Buttonprefab);
-
+        InstantiatedTextboxes.Add(GO);
         GO.transform.SetParent(SpeechBubblesParent, false);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         GOprefab.transform.SetParent(BubblePrefab.BubbleCustomButtonprefabParent, false);
