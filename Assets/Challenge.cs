@@ -8,6 +8,7 @@ public class Challenge
     [Header("MainVariables")]
     public string NameOfChallenge;
     public Sprite ChallengeSprite;
+    [TextArea(10,10)]
     public string ChallengeDescription;
 
     [Header("Tokenizer")]
