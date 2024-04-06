@@ -18,22 +18,40 @@ public class Chatbot : MonoBehaviour
     public TMP_InputField TextInputfield;
 
     [Header("Response Management")]
-    private string temptext;
+    private string currentResponse;
+    private string temptext, ContextedText;
     public GameObject ResponsePrefab, YourMessagePrefab;
     public Transform SpeechBubblesParent;
+
+    [Header("ModularChatbotFuncs")]
+    public Chatbot_ST CBM_SentenceTransform;
+    public Chatbot_AT CBM_AutoTokenizer;
 
 
     public List<string> PastSuccessfulInputs, PastSuccessfulGenerations = new();
     public void OnClickSendMessage()
     {
-        string contextMessage = Context + InputHeader + TextInputfield.text + InputCloser + Seperator;
+        ContextedText = Context + InputHeader + TextInputfield.text + InputCloser + Seperator;
+        
         temptext = TextInputfield.text;
         SendYourMessage(temptext);
-        HuggingFaceAPI.TextGeneration(contextMessage, OnSendMessageSuccess, OnSendMessageFailure);
+
+        CBM_SentenceTransform.OnApply(temptext);
+     
+    }
+
+    public void OnSTSuccess()
+    {
+        if(!CBM_SentenceTransform.FindHighestFactor())
+        {
+            // Respond Normally;
+            HuggingFaceAPI.TextGeneration(ContextedText, OnSendMessageSuccess, OnSendMessageFailure);
+        }
     }
 
     public void OnSendMessageSuccess(string response)
     {
+        currentResponse = response;
         PastSuccessfulGenerations.Add(response);
         PastSuccessfulInputs.Add(temptext);
         SendBotMessage(response);

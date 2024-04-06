@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6578068}
+  - component: {fileID: 6578069}
   m_Layer: 0
   m_Name: AvailableProjectsManager
   m_TagString: Untagged
@@ -154,6 +155,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 778704623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6578069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba94b5babf9e0a4e818c1a00f324d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Challenges: []
+  strings: []
+  QueriedChallenges: []
 --- !u!1 &219430328
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +405,63 @@ Transform:
   - {fileID: 1315080062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &878365258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878365259}
+  - component: {fileID: 878365260}
+  m_Layer: 0
+  m_Name: MOD_Chatbot_ST
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &878365259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878365258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1315080062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &878365260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878365258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044dc2bf5fc7cc2488b7a227ebf4b1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatBotMain: {fileID: 1315080063}
+  Actions:
+  - General Conversation
+  - Events
+  - Leaderboard
+  - Statistics
+  - Report
+  ResponseSimilarityFactor: []
+  ActionResponses: []
+  ActionResponseEvents: []
+  HighestString: 
+  HighestStringFactor: 0
+  SentenceMatchThreshold: 0.25
 --- !u!1 &888659838
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +856,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 878365259}
+  - {fileID: 2124873118}
   m_Father: {fileID: 778704623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1315080063
@@ -811,6 +886,8 @@ MonoBehaviour:
   ResponsePrefab: {fileID: 7742349227921447351, guid: 6e7b7393fa9862c4a8fc49397e07c74a, type: 3}
   YourMessagePrefab: {fileID: 8265414294791414622, guid: c2c3d968ce0452241a235ca767792546, type: 3}
   SpeechBubblesParent: {fileID: 1609933486}
+  CBM_SentenceTransform: {fileID: 878365260}
+  CBM_AutoTokenizer: {fileID: 2124873119}
   PastSuccessfulInputs: []
   PastSuccessfulGenerations: []
 --- !u!1 &1429049062
@@ -1391,6 +1468,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2124873117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124873118}
+  - component: {fileID: 2124873119}
+  m_Layer: 0
+  m_Name: MOD_Chatbot_AT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2124873118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124873117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1315080062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2124873119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124873117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6403e63eb09e34585b5c11c4fbba45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Context: 'Context: You are a tokenizer. You will receive the following description
+    of a project and you are to classify it into one worded tokens in the following
+    format {"Token1", "Token2", "Token3}. you are to strictly follow this format
+    at all times.'
+  FailedToGenerateText: 
+  InputHeader: '[INST]'
+  InputCloser: '[/INST]'
+  Seperator: '{NL}
+
+'
+  Response: 
+  Tokens: []
 --- !u!1 &2131101309
 GameObject:
   m_ObjectHideFlags: 0
