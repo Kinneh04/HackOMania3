@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 using UnityEngine.Events;
 using DG.Tweening;
+using System.IO;
 
 public class Chatbot : MonoBehaviour
 {
@@ -48,15 +49,86 @@ public class Chatbot : MonoBehaviour
     public GameObject ChatbotUI;
     public GameObject UtilitiesUI;
     public GameObject SpeechBubble;
+    public GameObject ArticleObject;
+    public GameObject LeaderboardObject;
 
     public Image SPencerSprite;
     public Sprite ThinkingSprite;
     public Sprite IdleSprite;
+    public ArticleManager articleManager;
+
+    [Header("Microphone")]
+    public bool isRecording;
+    private AudioClip clip;
+    private byte[] bytes;
+    private bool recording;
+    private byte[] EncodeAsWAV(float[] samples, int frequency, int channels)
+    {
+        using (var memoryStream = new MemoryStream(44 + samples.Length * 2))
+        {
+            using (var writer = new BinaryWriter(memoryStream))
+            {
+                writer.Write("RIFF".ToCharArray());
+                writer.Write(36 + samples.Length * 2);
+                writer.Write("WAVE".ToCharArray());
+                writer.Write("fmt ".ToCharArray());
+                writer.Write(16);
+                writer.Write((ushort)1);
+                writer.Write((ushort)channels);
+                writer.Write(frequency);
+                writer.Write(frequency * channels * 2);
+                writer.Write((ushort)(channels * 2));
+                writer.Write((ushort)16);
+                writer.Write("data".ToCharArray());
+                writer.Write(samples.Length * 2);
+
+                foreach (var sample in samples)
+                {
+                    writer.Write((short)(sample * short.MaxValue));
+                }
+            }
+            return memoryStream.ToArray();
+        }
+    }
+    public void OnToggleRecord()
+    {
+        if (isRecording)
+        {
+
+            isRecording = false;
+            var position = Microphone.GetPosition(null);
+          //  Microphone.End(null);
+            Microphone.End(null);
+            var samples = new float[position * clip.channels];
+            clip.GetData(samples, 0);
+            bytes = EncodeAsWAV(samples, clip.frequency, clip.channels);
+            HuggingFaceAPI.AutomaticSpeechRecognition(bytes, OnRecordSuccess, OnRecordFailure);
+        }
+        else
+        {
+            isRecording = true;
+            clip = Microphone.Start(null, false, 10, 44100);
+        }
+    }
+
+    public void OnRecordSuccess(string response)
+    {
+        TextInputfield.text = response;
+    }
+    public void OnRecordFailure(string response)
+    {
+        SendBotMessage("Error occured with API callback: " + response);
+    }
+
+    public void GoToLeaderboard()
+    {
+        LeaderboardObject.SetActive(true);
+    }
 
 
     public void GoToUtilities()
     {
-        ChatbotUI.SetActive(false);
+      //  ChatbotUI.SetActive(false);
         UtilitiesUI.SetActive(true);
     }
 
@@ -147,7 +219,7 @@ public class Chatbot : MonoBehaviour
 
     public void ReenableButton()
     {
-
+ 
     }
 
     public void SendYourMessage(string s)
@@ -226,7 +298,8 @@ public class Chatbot : MonoBehaviour
 
     public void GoToArticle(Challenge C)
     {
-        
+        ArticleObject.SetActive(true);
+        articleManager.LoadChallenge(C);
     }
 
     public void SendArticleWithSummarizeButton(string title, GameObject Buttonprefab, Challenge C, Sprite iconSprite)

@@ -107,7 +107,7 @@ public class Chatbot_ST : MonoBehaviour
     }
     public void RespondWithleaderboard()
     {
-        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); }, LeaderboardSprite);
+        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { chatBotMain.GoToLeaderboard(); }, LeaderboardSprite);
     }
 
     public void RespondWithPlantRedirect()
