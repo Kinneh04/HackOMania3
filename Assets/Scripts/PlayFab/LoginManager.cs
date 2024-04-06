@@ -29,6 +29,7 @@ public class LoginManager : MonoBehaviour
         // Check if logged in before and autologin
         if (PlayerPrefs.HasKey("SPGroupCustomID"))
         {
+            splashImage.SetActive(true);
             StopCoroutine(splashCoroutine); // Only hide splash screen after logged in
             var deviceReq = new LoginWithCustomIDRequest
             {
@@ -94,7 +95,7 @@ public class LoginManager : MonoBehaviour
     public IEnumerator SplashCoroutine()
     {
         splashImage.SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         splashImage.SetActive(false);
     }
 
@@ -141,6 +142,7 @@ public class LoginManager : MonoBehaviour
             yield return null;
 
         splashManager.SetLoading(false);
+        splashImage.SetActive(false);
     }
 
     /*
@@ -148,7 +150,6 @@ public class LoginManager : MonoBehaviour
      */
     void OnPlayerLoginSucc(LoginResult r)
     {
-        splashImage.SetActive(false);
         OnRememberMe();
         StartCoroutine(LoadGameSceneAsync());
     }

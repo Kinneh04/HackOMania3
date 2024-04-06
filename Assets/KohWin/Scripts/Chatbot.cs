@@ -62,6 +62,8 @@ public class Chatbot : MonoBehaviour
     private AudioClip clip;
     private byte[] bytes;
     private bool recording;
+
+    public Toggle TTSToggle;
     private byte[] EncodeAsWAV(float[] samples, int frequency, int channels)
     {
         using (var memoryStream = new MemoryStream(44 + samples.Length * 2))
@@ -352,6 +354,11 @@ public class Chatbot : MonoBehaviour
         responseButton.text.text = buttonName;
 
         CHangeSPencerToThinking();
+
+        if(TTSToggle.isOn)
+        {
+
+        }
     }
 }
 
