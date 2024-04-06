@@ -158,7 +158,7 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
     }
 
-    public void SendMessageWithCustomButton(string s, GameObject Buttonprefab, string buttonName, UnityAction action)
+    public void SendMessageWithCustomButton(string s, GameObject Buttonprefab, string buttonName, UnityAction action, Sprite iconSprite = null)
     {
         GameObject GO = GameObject.Instantiate(ResponsePrefab);
         GameObject GOprefab = GameObject.Instantiate(Buttonprefab);
@@ -170,11 +170,12 @@ public class Chatbot : MonoBehaviour
         CustomResponseButton responseButton = GOprefab.GetComponent<CustomResponseButton>();
 
         responseButton.btn.onClick.AddListener(action);
-        responseButton.text.text = buttonName;
+        responseButton.Icon.sprite = iconSprite;
         GOprefab.transform.SetAsLastSibling();
         BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+        responseButton.text.text = buttonName;
     }
 }
 

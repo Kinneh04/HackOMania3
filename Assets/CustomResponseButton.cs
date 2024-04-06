@@ -8,5 +8,7 @@ public class CustomResponseButton : MonoBehaviour
 {
     public Button btn;
 
-    public TMP_Text text; 
+    public TMP_Text text;
+
+    public Image Icon;
 }

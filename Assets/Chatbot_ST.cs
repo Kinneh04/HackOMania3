@@ -29,6 +29,19 @@ public class Chatbot_ST : MonoBehaviour
     [Header("Actions and events")]
     public GameObject LeaderboardButtonPrefab;
 
+    [Header("SmokeAndMirrors")]
+    public string nearestEVLocation;
+    public string LinkToMap;
+
+    [Header("Icons")]
+    public Sprite GPSSprite;
+    public Sprite GraphSprite, PlantSprite, LeaderboardSprite, ReportSprite, EnergyUsageSprite;
+
+
+    public void OpenMapOnGoogle()
+    {
+        Application.OpenURL(LinkToMap);
+    }
   public void OnApply(string s)
     {
         HuggingFaceAPI.SentenceSimilarity(s, OnSuccess, OnFailure, Actions);
@@ -71,21 +84,67 @@ public class Chatbot_ST : MonoBehaviour
 
     public void RespondWithGraph()
     {
-        chatBotMain.SendMessageWithCustomButton("Viewing your energy consumption graph over time helps to see your trends in energy usage! Click the button below to view your energy report graph over time.", LeaderboardButtonPrefab, "View Graph", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("Viewing your energy consumption graph over time helps to see your trends in energy usage! Click the button below to view your energy report graph over time.", LeaderboardButtonPrefab, "View Graph", delegate { CustomNotImplementedException(); }, GraphSprite);
     }
     public void RespondWithleaderboard()
     {
-        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); }, LeaderboardSprite);
     }
 
     public void RespondWithPlantRedirect()
     {
-        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges! Click the button below to go to your plant.", LeaderboardButtonPrefab, "View Plant", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges! Click the button below to go to your plant.", LeaderboardButtonPrefab, "View Plant", delegate { CustomNotImplementedException(); }, PlantSprite);
+    }
+
+    public void SearchForNearestChargingStation()
+    {
+
+        StartCoroutine(SearchForNearestChargingStationCoroutine());
+    }
+
+    IEnumerator SearchForNearestChargingStationCoroutine()
+    {
+        chatBotMain.SendBotMessage("Got it! Searching for the nearest charging station in your area...");
+        yield return new WaitForSeconds(1.5f);
+        // Check if the user has location service enabled.
+        if (!Input.location.isEnabledByUser)
+            Debug.Log("Location not enabled on device or app does not have permission to access location");
+        Input.location.Start();
+        int maxWait = 5;
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+        {
+            yield return new WaitForSeconds(1);
+            maxWait--;
+        }
+        if (maxWait < 1)
+        {
+            chatBotMain.SendBotMessage("Im sorry, but I can't access your location at this time. Please try again later.");
+            yield break;
+        }
+        if (Input.location.status == LocationServiceStatus.Failed)
+        {
+            chatBotMain.SendBotMessage("Im sorry, but I can't access your location at this time. Please try again later.");
+            yield break;
+        }
+        else
+        {
+            // Access granted and location value could be retrieve
+            double longitude = Input.location.lastData.longitude;
+            double latitude = Input.location.lastData.latitude;
+           // chatBotMain.SendBotMessage("Retrieved user lat and long\n" + longitude.ToString() + "\n" + latitude.ToString());
+            yield return new WaitForSeconds(1.0f);
+            RespondWithSuccessfulEV();
+        }
+    }
+
+    public void RespondWithSuccessfulEV()
+    {
+        chatBotMain.SendMessageWithCustomButton("I have found the nearest charging station for you\n\n" + nearestEVLocation + "\n\n Click the button below to view the trip on google maps", LeaderboardButtonPrefab, "View on map", delegate { OpenMapOnGoogle() ; },GPSSprite);
     }
 
     public void RespondWithReportSubmission()
     {
-        chatBotMain.SendMessageWithCustomButton("Submitting utility bill reports can help you to manage your energy more effectively and see trends in your energy usage! Click the button below to submit a utility bill report now.", LeaderboardButtonPrefab, "Submit report", delegate { CustomNotImplementedException(); });
+        chatBotMain.SendMessageWithCustomButton("Submitting utility bill reports can help you to manage your energy more effectively and see trends in your energy usage! Click the button below to submit a utility bill report now.", LeaderboardButtonPrefab, "Submit report", delegate { CustomNotImplementedException(); }, ReportSprite);
     }
 
     public bool FindHighestFactor()
