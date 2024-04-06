@@ -15,11 +15,27 @@ public class Typewriter : MonoBehaviour
     public GameObject TutorialMenu, ChatWithTheGuyMenu;
     public HomeUI homeUI;
 
+    public bool doneTutorial;
+
+    private void OnDestroy()
+    {
+        if (doneTutorial) PlayerPrefs.SetInt("DoneTutorial", 1);
+        else PlayerPrefs.SetInt("DoneTutorial", 0);
+    }
+
     private void Start()
     {
-        if (Tutorials.Count > 0)
+        int i = PlayerPrefs.GetInt("DoneTutorial");
+        if (Tutorials.Count > 0 && i == 0)
         {
             StartCoroutine(TypeText(Tutorials[currentTextIndex].TutorialString));
+        }
+        else
+        {
+            TutorialMenu.SetActive(false);
+            ChatWithTheGuyMenu.SetActive(true);
+            homeUI.SetSpeechBbl();
+            doneTutorial = true;
         }
     }
 
@@ -64,6 +80,7 @@ public class Typewriter : MonoBehaviour
             TutorialMenu.SetActive(false);
             ChatWithTheGuyMenu.SetActive(true);
             homeUI.SetSpeechBbl();
+            doneTutorial = true;
         }
     }
 

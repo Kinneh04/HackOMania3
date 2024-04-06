@@ -124,7 +124,7 @@ public class Chatbot_ST : MonoBehaviour
 
     IEnumerator SearchForNearestChargingStationCoroutine()
     {
-        chatBotMain.SendBotMessage("Got it! Searching for the nearest charging station in your area...");
+        chatBotMain.SendBotMessage("Searching for the nearest charging station in your area...");
         yield return new WaitForSeconds(1.5f);
         // Check if the user has location service enabled.
         if (!Input.location.isEnabledByUser)
