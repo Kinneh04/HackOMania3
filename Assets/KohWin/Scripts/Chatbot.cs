@@ -61,6 +61,7 @@ public class Chatbot : MonoBehaviour
     public List<string> PastSuccessfulInputs, PastSuccessfulGenerations = new();
     public void OnClickSendMessage()
     {
+        if (string.IsNullOrEmpty(TextInputfield.text)) return;
         ContextedText = Context + InputHeader + TextInputfield.text + InputCloser + Seperator;
         
         temptext = TextInputfield.text;
@@ -130,6 +131,7 @@ public class Chatbot : MonoBehaviour
         BubblePrefab.mainChatbot = this;
         BubblePrefab.OnDisplaySpeech(s);
     }
+
 
     public void SendChallengeRecommendations(string s, Challenge C)
     {
