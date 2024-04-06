@@ -4,6 +4,8 @@ using UnityEngine;
 using HuggingFace.API;
 using TMPro;
 using UnityEngine.UI;
+
+using UnityEngine.Events;
 public class Chatbot : MonoBehaviour
 {
 
@@ -26,6 +28,8 @@ public class Chatbot : MonoBehaviour
     [Header("ModularChatbotFuncs")]
     public Chatbot_ST CBM_SentenceTransform;
     public Chatbot_AT CBM_AutoTokenizer;
+
+   
 
 
     public List<string> PastSuccessfulInputs, PastSuccessfulGenerations = new();
@@ -107,6 +111,24 @@ public class Chatbot : MonoBehaviour
         GameObject GO = GameObject.Instantiate(ResponsePrefab);
         GO.transform.SetParent(SpeechBubblesParent, false);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
+        BubblePrefab.typewrite = true;
+        BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
+    }
+
+    public void SendMessageWithCustomButton(string s, GameObject Buttonprefab, string buttonName, UnityAction action)
+    {
+        GameObject GO = GameObject.Instantiate(ResponsePrefab);
+        GameObject GOprefab = GameObject.Instantiate(Buttonprefab);
+
+        GO.transform.SetParent(SpeechBubblesParent, false);
+        SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
+        GOprefab.transform.SetParent(BubblePrefab.BubbleCustomButtonprefabParent, false);
+
+        CustomResponseButton responseButton = GOprefab.GetComponent<CustomResponseButton>();
+
+        responseButton.btn.onClick.AddListener(action);
+        responseButton.text.text = buttonName;
+        GOprefab.transform.SetAsLastSibling();
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
     }

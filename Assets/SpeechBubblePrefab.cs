@@ -9,6 +9,8 @@ public class SpeechBubblePrefab : MonoBehaviour
     public string FullSpeech;
     public bool typewrite = false;
 
+    public Transform BubbleCustomButtonprefabParent;
+
     public Image image;
 
     [Header("TypewriterSettings")]

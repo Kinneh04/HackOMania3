@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 94.8215, y: 0}
   m_SizeDelta: {x: 189.643, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3564585679929293067
@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 94.82, y: 0}
   m_SizeDelta: {x: 189.64, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5745654962190471226
@@ -361,4 +361,11 @@ MonoBehaviour:
   Text: {fileID: 5174559415774598137}
   FullSpeech: 
   typewrite: 0
+  BubbleCustomButtonprefabParent: {fileID: 369412644474807693}
+  image: {fileID: 0}
   typewriterSpeed: 0.02
+  SavedChallenge:
+    NameOfChallenge: 
+    ChallengeSprite: {fileID: 0}
+    ChallengeDescription: 
+    KeywordTokens: []

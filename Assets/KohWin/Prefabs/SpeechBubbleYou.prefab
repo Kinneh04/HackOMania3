@@ -361,4 +361,11 @@ MonoBehaviour:
   Text: {fileID: 7389281428831846032}
   FullSpeech: 
   typewrite: 0
+  BubbleCustomButtonprefabParent: {fileID: 3394216645001053334}
+  image: {fileID: 0}
   typewriterSpeed: 0.04
+  SavedChallenge:
+    NameOfChallenge: 
+    ChallengeSprite: {fileID: 0}
+    ChallengeDescription: 
+    KeywordTokens: []

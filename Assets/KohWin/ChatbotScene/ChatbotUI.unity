@@ -490,10 +490,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 878365260}
+        m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
+        m_MethodName: RespondWithleaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   challengesManager: {fileID: 6578069}
   HighestString: 
   HighestStringFactor: 0
   SentenceMatchThreshold: 0.25
+  LeaderboardButtonPrefab: {fileID: 3968270098125338812, guid: 7c997546255020c4881908c38960c471, type: 3}
 --- !u!1 &888659838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1724,7 @@ MonoBehaviour:
   Text: {fileID: 2883501721330177076}
   FullSpeech: 
   typewrite: 0
+  BubbleCustomButtonprefabParent: {fileID: 0}
   image: {fileID: 0}
   typewriterSpeed: 0.02
   SavedChallenge:

@@ -26,6 +26,9 @@ public class Chatbot_ST : MonoBehaviour
     [Range(0, 0.95f)]
     public float SentenceMatchThreshold;
 
+    [Header("Actions and events")]
+    public GameObject LeaderboardButtonPrefab;
+
   public void OnApply(string s)
     {
         HuggingFaceAPI.SentenceSimilarity(s, OnSuccess, OnFailure, Actions);
@@ -60,6 +63,16 @@ public class Chatbot_ST : MonoBehaviour
 
     }
 
+    public void CustomNotImplementedException()
+    {
+        Debug.LogError("Not implemented!");
+    }
+
+    public void RespondWithleaderboard()
+    {
+        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Would you like to view the leaderboard?", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); });
+    }
+
     public bool FindHighestFactor()
     {
         HighestString = "";
@@ -75,7 +88,7 @@ public class Chatbot_ST : MonoBehaviour
         // Loop through the ResponseSimilarityFactor to find the highest value
         for (int i = 1; i < ResponseSimilarityFactor.Length; i++)
         {
-            if (ResponseSimilarityFactor[i] > 0 && ResponseSimilarityFactor[i] > SentenceMatchThreshold)
+            if (ResponseSimilarityFactor[i] > 0 && ResponseSimilarityFactor[i] > SentenceMatchThreshold && ResponseSimilarityFactor[i] > highestValue)
             {
                 highestValue = ResponseSimilarityFactor[i];
                 highestIndex = i;

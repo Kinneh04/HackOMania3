@@ -318,6 +318,7 @@ MonoBehaviour:
   Text: {fileID: 3583339108093836014}
   FullSpeech: 
   typewrite: 0
+  BubbleCustomButtonprefabParent: {fileID: 274867665065546460}
   image: {fileID: 3111764405680850956}
   typewriterSpeed: 0.02
   SavedChallenge:
