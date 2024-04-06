@@ -12,7 +12,7 @@ public class HomeUI : MonoBehaviour
     [SerializeField] private GameObject _spencerButton_fake;
 
     // Start is called before the first frame update
-    void Start()
+    public void SetSpeechBbl()
     {
         StartCoroutine(SetSpeechBubble());
     }
