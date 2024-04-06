@@ -354,11 +354,6 @@ public class Chatbot : MonoBehaviour
         responseButton.text.text = buttonName;
 
         CHangeSPencerToThinking();
-
-        if(TTSToggle.isOn)
-        {
-
-        }
     }
 }
 
