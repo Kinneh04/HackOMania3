@@ -41,6 +41,8 @@ public class Chatbot : MonoBehaviour
         SendYourMessage(temptext);
 
         CBM_SentenceTransform.OnApply(temptext);
+
+        TextInputfield.text = ""; 
      
     }
 
