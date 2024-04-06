@@ -3509,6 +3509,9 @@ MonoBehaviour:
   ChatbotUI: {fileID: 1545092921}
   UtilitiesUI: {fileID: 1748514957}
   SpeechBubble: {fileID: 936548562}
+  SPencerSprite: {fileID: 706681426}
+  ThinkingSprite: {fileID: 21300000, guid: fe5a9ca3fd71a744595140518997a83e, type: 3}
+  IdleSprite: {fileID: 21300000, guid: 241af6dd86c05b64988b92c04e65619d, type: 3}
   PastSuccessfulInputs: []
   PastSuccessfulGenerations: []
 --- !u!1 &1359872225
