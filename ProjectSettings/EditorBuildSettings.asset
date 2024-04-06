@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SPencerChatScene.unity
     guid: f8e7f27bb46a7ea41b0cdd7a1486c9de
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: 7b3c086e4ce9edc48a065d4ae3b07fd3
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4722bfbad6452884cac551d17ddd919b, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 188fe1d41e5e930449b4c1a288136261, type: 2}

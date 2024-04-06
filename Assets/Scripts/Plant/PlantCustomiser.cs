@@ -86,6 +86,7 @@ public class PlantCustomiser : MonoBehaviour
 
     private void ResetTabs()
     {
+        // TODO: Move this to PlantPanelManager so it updates first! Do this after adding loading
         PlayFabClientAPI.GetUserData(
         new GetUserDataRequest(),
         result =>
