@@ -470,7 +470,7 @@ MonoBehaviour:
   - General Conversation
   - Events
   - Leaderboard
-  - Statistics
+  - Plant
   - Utility Bill
   ResponseSimilarityFactor: []
   ActionResponseEvents:
@@ -495,6 +495,34 @@ MonoBehaviour:
       - m_Target: {fileID: 878365260}
         m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
         m_MethodName: RespondWithleaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 878365260}
+        m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
+        m_MethodName: RespondWithPlantRedirect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 878365260}
+        m_TargetAssemblyTypeName: Chatbot_ST, Assembly-CSharp
+        m_MethodName: RespondWithReportSubmission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

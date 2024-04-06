@@ -73,6 +73,16 @@ public class Chatbot_ST : MonoBehaviour
         chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Would you like to view the leaderboard?", LeaderboardButtonPrefab, "View Leaderboard", delegate { CustomNotImplementedException(); });
     }
 
+    public void RespondWithPlantRedirect()
+    {
+        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges!", LeaderboardButtonPrefab, "View Plant", delegate { CustomNotImplementedException(); });
+    }
+
+    public void RespondWithReportSubmission()
+    {
+        chatBotMain.SendMessageWithCustomButton("Submitting utility bill reports can help you to manage your energy more effectively and see trends in your energy usage! Would you like to submit a report now?", LeaderboardButtonPrefab, "Submit report", delegate { CustomNotImplementedException(); });
+    }
+
     public bool FindHighestFactor()
     {
         HighestString = "";
