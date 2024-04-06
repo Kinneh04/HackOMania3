@@ -10,7 +10,7 @@ public class PlantRotator : MonoBehaviour
     public const float RotateSpeed = 500f;
     const float zoomSpeed = 4.0f, minScale = 2.0f, maxScale = 5.0f, minPinchSpeed = 5.0f, varianceInDistance = 5.0f;
 
-    [SerializeField] Shader GlobalShader;
+    //[SerializeField] Shader GlobalShader;
 
     private float _screenWidth;
     private float _screenHeight;
@@ -47,12 +47,12 @@ public class PlantRotator : MonoBehaviour
     private void UpdateRotation()
     {
         float rotationVertical = -180f * _inputVector.x;
-        //float rotationHorizontal = 30f * _inputVector.y;
+        float rotationHorizontal = 30f * _inputVector.y;
         Camera.main.transform.RotateAround(_plantPos, new Vector3(0f, rotationVertical, 0f), Time.deltaTime * RotateSpeed);
-        /*var newRot = Camera.main.transform.rotation.eulerAngles 
+        var newRot = Camera.main.transform.rotation.eulerAngles 
             + new Vector3(rotationHorizontal, 0f, 0f);
         float newRotX = newRot.x < 350f && newRot.x > 300f ? 350f : newRot.x > 10f && newRot.x < 20f ? 10f : newRot.x;
-        Camera.main.transform.rotation = Quaternion.Euler(new Vector3(newRotX, newRot.y, newRot.z));*/
+        Camera.main.transform.rotation = Quaternion.Euler(new Vector3(newRotX, newRot.y, newRot.z));
         //Camera.main.transform.Rotate(new Vector3(rotationHorizontal, 0f, 0f), Space.World);
         //transform.Rotate(new Vector3(rotationHorizontal, rotationVertical, 0f), Space.World);
     }
