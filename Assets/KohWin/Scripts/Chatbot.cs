@@ -51,6 +51,7 @@ public class Chatbot : MonoBehaviour
     public GameObject SpeechBubble;
     public GameObject ArticleObject;
     public GameObject LeaderboardObject;
+    public GameObject GraphObject;
 
     public Image SPencerSprite;
     public Sprite ThinkingSprite;

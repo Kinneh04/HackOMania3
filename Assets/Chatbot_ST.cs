@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HuggingFace.API;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 public class Chatbot_ST : MonoBehaviour
 {
 
@@ -103,7 +104,7 @@ public class Chatbot_ST : MonoBehaviour
 
     public void RespondWithGraph()
     {
-        chatBotMain.SendMessageWithCustomButton("Viewing your energy consumption graph over time helps to see your trends in energy usage! Click the button below to view your energy report graph over time.", LeaderboardButtonPrefab, "View Graph", delegate { CustomNotImplementedException(); }, GraphSprite);
+        chatBotMain.SendMessageWithCustomButton("Viewing your energy consumption graph over time helps to see your trends in energy usage! Click the button below to view your energy report graph over time.", LeaderboardButtonPrefab, "View Graph", delegate { chatBotMain.GraphObject.SetActive(true); }, GraphSprite);
     }
     public void RespondWithleaderboard()
     {
@@ -112,7 +113,7 @@ public class Chatbot_ST : MonoBehaviour
 
     public void RespondWithPlantRedirect()
     {
-        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges! Click the button below to go to your plant.", LeaderboardButtonPrefab, "View Plant", delegate { CustomNotImplementedException(); }, PlantSprite);
+        chatBotMain.SendMessageWithCustomButton("Your plant is going strong! Keep it healthy by completing daily challenges! Click the button below to go to your plant.", LeaderboardButtonPrefab, "View Plant", delegate { SceneManager.LoadScene("PlantScene"); }, PlantSprite);
     }
 
     public void SearchForNearestChargingStation()
