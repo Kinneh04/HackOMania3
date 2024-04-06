@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 154.7901, y: 90.1317}
+  m_SizeDelta: {x: 167.4354, y: 105.6482}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8750438263901077991
 CanvasRenderer:
@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 94.8215, y: 0}
+  m_AnchoredPosition: {x: 107.7432, y: 0}
   m_SizeDelta: {x: 189.64, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1123720426798885825
@@ -188,8 +188,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: dawdawdbadhagdawghdghadgagdagdgawgjdgawghdgawgdahdgaawgawkdgawjdghhkadhggkhkh
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a918737c15bf6a9429d80c894e9faf7e, type: 2}
+  m_sharedMaterial: {fileID: 6674897661479730675, guid: a918737c15bf6a9429d80c894e9faf7e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -371,6 +371,7 @@ MonoBehaviour:
     ChallengeSprite: {fileID: 0}
     ChallengeDescription: 
     KeywordTokens: []
+  mainChatbot: {fileID: 0}
 --- !u!1 &8619277650641213963
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,8 +410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 94.8215, y: 0}
-  m_SizeDelta: {x: 189.643, y: 0}
+  m_AnchoredPosition: {x: 107.7432, y: 0}
+  m_SizeDelta: {x: 215.4864, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8784009955105943862
 CanvasRenderer:
@@ -440,8 +441,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: edf829878f1fbaa439d23a5de0a9b692, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -477,10 +478,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 15
+    m_Right: 15
+    m_Top: 10
+    m_Bottom: 17
   m_ChildAlignment: 1
   m_Spacing: 10
   m_ChildForceExpandWidth: 1

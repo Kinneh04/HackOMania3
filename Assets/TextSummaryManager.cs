@@ -46,7 +46,7 @@ public class TextSummaryManager : MonoBehaviour
     }
 
     public void OnSendMessageSuccess(string response)
-    {
+    { 
         ResponseSummaryText.text = ExtractStringAfterSeparator(response);
         SummaryMenu.SetActive(true);
 

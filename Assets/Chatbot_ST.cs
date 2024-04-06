@@ -57,7 +57,7 @@ public class Chatbot_ST : MonoBehaviour
         {
 
 
-            string responseText = "Here is an event that matches what you might be looking for! \n" + challengesManager.QueriedChallenges[0].NameOfChallenge;
+            string responseText = "Here is a challenge that matches what you might be looking for! \n\n" + challengesManager.QueriedChallenges[0].NameOfChallenge + "\n\nClick to view the challenge! Remember, you can claim rewards for every challenge you complete!";
             chatBotMain.SendChallengeRecommendations(responseText, challengesManager.QueriedChallenges[0]);
         }
 

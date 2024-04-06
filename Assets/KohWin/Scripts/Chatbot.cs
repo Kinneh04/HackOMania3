@@ -34,6 +34,8 @@ public class Chatbot : MonoBehaviour
     public Chatbot_ST CBM_SentenceTransform;
     public Chatbot_AT CBM_AutoTokenizer;
 
+    public Button SendButton;
+
     private void Start()
     {
         GreetUser();
@@ -66,7 +68,8 @@ public class Chatbot : MonoBehaviour
 
         CBM_SentenceTransform.OnApply(temptext);
 
-        TextInputfield.text = ""; 
+        TextInputfield.text = "";
+        SendButton.interactable = false;
      
     }
 
@@ -89,7 +92,7 @@ public class Chatbot : MonoBehaviour
 
     public void OnSendMessageFailure(string response)
     {
-     
+        SendButton.interactable = true;
     }
 
     public string ExtractStringAfterSeparator(string s)
@@ -112,6 +115,11 @@ public class Chatbot : MonoBehaviour
         }
     }
 
+    public void ReenableButton()
+    {
+
+    }
+
     public void SendYourMessage(string s)
     {
         GameObject GO = GameObject.Instantiate(YourMessagePrefab);
@@ -119,6 +127,7 @@ public class Chatbot : MonoBehaviour
         InstantiatedTextboxes.Add(GO);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         BubblePrefab.typewrite = false;
+        BubblePrefab.mainChatbot = this;
         BubblePrefab.OnDisplaySpeech(s);
     }
 
@@ -131,6 +140,7 @@ public class Chatbot : MonoBehaviour
         InstantiatedTextboxes.Add(GO);
         BubblePrefab.image.GetComponent<Button>().onClick.AddListener(delegate { BubblePrefab.RedirectToChallenge(); });
         BubblePrefab.SavedChallenge = C;
+        BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
     }
@@ -142,6 +152,7 @@ public class Chatbot : MonoBehaviour
         InstantiatedTextboxes.Add(GO);
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         BubblePrefab.typewrite = true;
+        BubblePrefab.mainChatbot = this;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
     }
 
@@ -159,6 +170,7 @@ public class Chatbot : MonoBehaviour
         responseButton.btn.onClick.AddListener(action);
         responseButton.text.text = buttonName;
         GOprefab.transform.SetAsLastSibling();
+        BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
     }

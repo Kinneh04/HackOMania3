@@ -19,6 +19,8 @@ public class SpeechBubblePrefab : MonoBehaviour
     private Coroutine typewriterCoroutine;
 
     public Challenge SavedChallenge;
+
+    public Chatbot mainChatbot;
     public void RedirectToChallenge()
     {
         // Redirect to challenge page, closing the bot.;
@@ -39,6 +41,7 @@ public class SpeechBubblePrefab : MonoBehaviour
         {
             Text.text = FullSpeech;
         }
+     
     }
 
     IEnumerator TypewriterEffect()
@@ -50,5 +53,6 @@ public class SpeechBubblePrefab : MonoBehaviour
             Text.text += FullSpeech[i];
             yield return new WaitForSeconds(typewriterSpeed);
         }
+        mainChatbot.SendButton.interactable = true;
     }
 }
