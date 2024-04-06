@@ -5,13 +5,24 @@ using UnityEngine.UI;
 
 public class CustomiseButton : MonoBehaviour
 {
-    // TODO: Thumbnail
+    // TODO: Leaves
+    [SerializeField] Image thumbnail;
+    [SerializeField] GameObject selectedBG;
     public Customizable CustomizableInfo;
 
     public void InitializeButton(PlantCustomiser customiser, Customizable info)
     {
         CustomizableInfo = info;
+        thumbnail.sprite = info.Type.Thumbnail;
+        UpdateSelected(info.Selected);
         GetComponent<Button>().onClick.AddListener(() => customiser.OnPressButton(this));
+    }
+
+    public void UpdateSelected(bool selected)
+    {
+        selectedBG.SetActive(selected);
+        GetComponent<Button>().enabled = !selected;
+        CustomizableInfo.Selected = selected;
     }
 }
 
@@ -19,10 +30,8 @@ public class CustomiseButton : MonoBehaviour
 public class Customizable
 {
     public int Index;
-    public int LeavesRequired = 0;
-    public Sprite Thumbnail;
-    public string Name;
+    public CustomizableTypes Type;
 
-    public bool Locked = true;
+    public bool Locked = false;
     public bool Selected = false;
 }

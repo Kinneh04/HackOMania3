@@ -127,7 +127,7 @@ public class SignUpManager : MonoBehaviour
     void OnRegSucc(RegisterPlayFabUserResult r)
     {
         popupManager.ShowMessage("Success!", "Please login with your new account.", "OK", false, () => splashManager.OnSwitchPanel("Login"), () => splashManager.OnSwitchPanel("Login"));
-        // TODO: Plant stuff here! CloudScriptManager.Instance.ExecBasicCoudScriptFunction(CloudScriptType.OnPlayerRegister, null, e => OnError("Error adding default items to your account", e));
+        CloudScriptManager.Instance.ExecBasicCoudScriptFunction(CloudScriptType.OnPlayerRegister, null, e => OnError("Error adding default items to your account", e));
     }
 
     void OnError(string errorTitle, PlayFabError e)

@@ -151,19 +151,6 @@ public class LoginManager : MonoBehaviour
         splashImage.SetActive(false);
         OnRememberMe();
         StartCoroutine(LoadGameSceneAsync());
-
-        // TODO Inventory stuffs
-        /*CloudScriptManager.Instance.ExecBasicCoudScriptFunction(
-            CloudScriptType.OnPlayerLogin,
-            _ =>
-            {
-                if (tg_remember.isOn)
-                    OnRememberMe();
-
-                StartCoroutine(LoadGameSceneAsync());
-            },
-            e => OnError("Error logging in player.", e)
-        );*/
     }
 
     void OnError(string errorTitle, PlayFabError e)
@@ -189,6 +176,7 @@ public class LoginManager : MonoBehaviour
         Debug.LogError("Error Code: " + e.Error.GetTypeCode().ToString());
 
         // Reenable both buttons
+        splashImage.SetActive(false);
         button_login.SetLoading(false);
     }
 }
