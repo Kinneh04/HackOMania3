@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.UI;
 
 using UnityEngine.Events;
+using DG.Tweening;
+
 public class Chatbot : MonoBehaviour
 {
 
@@ -60,8 +62,12 @@ public class Chatbot : MonoBehaviour
 
     private void Awake()
     {
-        GreetUser();
+        Sequence seq = DOTween.Sequence();
+        seq.Append(SPencerSprite.GetComponent<RectTransform>().DOAnchorPosY(50, 0.05f));
+        seq.Append(SPencerSprite.GetComponent<RectTransform>().DOAnchorPosY(5, 0.5f));
+        seq.AppendCallback(() => GreetUser());
     }
+
 
     public void ClearAndResetChat()
     {
