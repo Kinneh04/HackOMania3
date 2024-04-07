@@ -1871,7 +1871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73440292442985870, guid: f0d486063233c0a4784693b95ee67ea7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 73440292442985870, guid: f0d486063233c0a4784693b95ee67ea7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2338,7 +2338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -200, y: 689.83}
+  m_SizeDelta: {x: -200, y: 589.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285344201
 MonoBehaviour:
@@ -5513,8 +5513,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
+  m_SizeDelta: {x: 880, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &881626055
 MonoBehaviour:
@@ -7451,7 +7451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 440, y: -584.92}
+  m_AnchoredPosition: {x: 440, y: -484.92}
   m_SizeDelta: {x: 780, y: 109.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205799902
@@ -8812,7 +8812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1533031344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8852,7 +8852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[TODO Forgot Email/Password]'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 276d94a56137b4c44be751351042d6aa, type: 2}
   m_sharedMaterial: {fileID: 8133137044466562260, guid: 276d94a56137b4c44be751351042d6aa, type: 2}
