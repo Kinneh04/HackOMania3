@@ -173,7 +173,7 @@ public class PlantRotator : MonoBehaviour
             }
         }
 #elif UNITY_ANDROID
-        /*if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved)
+        if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved)
         {
 
             var curDist = Input.GetTouch(0).position - Input.GetTouch(1).position; //current distance between finger touches
@@ -194,7 +194,7 @@ public class PlantRotator : MonoBehaviour
                 Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - (1 * zoomSpeed), 60, 125);
             }
 
-        }*/
+        }
 #endif
     }
     #endregion
@@ -205,7 +205,9 @@ public class PlantRotator : MonoBehaviour
     /// </summary>
     public void OnBeginTap()
     {
-        autoRotate = false;
+        if (GetIsTapOnPlant())
+            autoRotate = false;
+
         _startPos = Input.mousePosition;
     }
 
