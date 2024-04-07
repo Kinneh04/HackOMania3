@@ -20,6 +20,8 @@ public class PlantPanelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindPanelOfType(PlantPanelType.Customisation).panelObj.GetComponent<PlantCustomiser>().UpdatePlant();
+        FindPanelOfType(PlantPanelType.GreenUp).panelObj.GetComponent<PlantLeaves>().UpdateLeavesCount(true);
         // Set all panels except for starting panel to inactive
         foreach (var panel in _panels)
         {
@@ -49,6 +51,7 @@ public class PlantPanelManager : MonoBehaviour
     public void OnSwitchPanel(string type)
     {
         // button params do not accept enums :( have to convert
+        var currSize = plantViewport.sizeDelta;
         var newPanel = FindPanelOfType((PlantPanelType)System.Enum.Parse(typeof(PlantPanelType), type));
 
         if (newPanel != null)
@@ -56,20 +59,21 @@ public class PlantPanelManager : MonoBehaviour
             switch (newPanel.type)
             {
                 case PlantPanelType.GreenUp:
-                    var currSize = plantViewport.sizeDelta;
-                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1000f), 0.5f);
+                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1100f), 0.5f);
                     infoPanel.SetActive(true);
                     extraInfo.SetActive(false);
                     title.text = "GreenUp";
                     break;
 
                 case PlantPanelType.MyPlant:
+                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1700f), 0.5f);
                     infoPanel.SetActive(true);
                     extraInfo.SetActive(true);
                     title.text = "My Plant";
                     break;
 
                 case PlantPanelType.Customisation:
+                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1100f), 0.5f);
                     infoPanel.SetActive(false);
                     title.text = "Plant Customisation";
                     break;
@@ -93,8 +97,6 @@ public class PlantPanelManager : MonoBehaviour
         if (_currPanel.type != PlantPanelType.GreenUp)
             return;
 
-        var currSize = plantViewport.sizeDelta;
-        plantViewport.DOSizeDelta(new Vector2(currSize.x, 1500f), 0.5f);
         OnSwitchPanel("MyPlant");
     }
 

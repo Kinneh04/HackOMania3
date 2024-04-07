@@ -22,12 +22,11 @@ public class PlantCustomiser : MonoBehaviour
     int currPot = -1, currPlant = -1;
     int defaultPot = 0, defaultPlant = 0;
     CustomiseButton currButton = null;
+    [SerializeField] PlantPanelManager panelManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameObject.SetActive(false);
-
         // Hide content for now
         /*loading.SetActive(false);
         shopContent.SetActive(false);*/
@@ -39,6 +38,7 @@ public class PlantCustomiser : MonoBehaviour
             tabs[i].GetComponent<Button>().onClick.AddListener(() => OnSwitchTabs(tmp));
         }
 
+        //gameObject.SetActive(false);
     }
 
     #region Interface
@@ -50,9 +50,9 @@ public class PlantCustomiser : MonoBehaviour
 
     private void OnDisable()
     {
+        currTab = -1;
         currButton = null;
     }
-
 
     private void SetLoading(bool isLoading)
     {
@@ -83,10 +83,8 @@ public class PlantCustomiser : MonoBehaviour
         UpdateButtons(index);
     }
 
-
-    private void ResetTabs()
+    public void UpdatePlant()
     {
-        // TODO: Move this to PlantPanelManager so it updates first! Do this after adding loading
         PlayFabClientAPI.GetUserData(
         new GetUserDataRequest(),
         result =>
@@ -103,9 +101,16 @@ public class PlantCustomiser : MonoBehaviour
                 plant.mesh = plantTypes[currPlant].Mesh;
             }
 
-            OnSwitchTabs(0);
+            gameObject.SetActive(true);
         },
         OnError);
+    }
+
+
+    private void ResetTabs()
+    {
+        UpdatePlant();
+        OnSwitchTabs(0);
     }
     #endregion
 
@@ -135,7 +140,10 @@ public class PlantCustomiser : MonoBehaviour
                     });
 
                     if (currPot == i)
+                    {
                         currButton = button.GetComponent<CustomiseButton>();
+                        text_selected.text = potTypes[i].Name;
+                    }
 
                     i++;
                 }
@@ -155,7 +163,10 @@ public class PlantCustomiser : MonoBehaviour
                     });
 
                     if (currPlant == i)
+                    {
                         currButton = button.GetComponent<CustomiseButton>();
+                        text_selected.text = plantTypes[i].Name;
+                    }
 
                     i++;
                 }
@@ -236,7 +247,7 @@ public class PlantCustomiser : MonoBehaviour
             plant.mesh = plantTypes[defaultPlant].Mesh;
         }
 
-        gameObject.SetActive(false);
+        panelManager.OnSwitchPanel("MyPlant");
     }
 }
 

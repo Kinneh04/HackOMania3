@@ -9,14 +9,9 @@ using TMPro;
 
 public class PlantLeaves : MonoBehaviour
 {
-    [SerializeField] TMP_Text text_leaves, text_level;
+    [SerializeField] TMP_Text text_leaves, text_level, text_nextLeaves;
     [SerializeField] Slider progress_amount;
     int? currLeaves = null;
-
-    private void OnEnable()
-    {
-        UpdateLeavesCount(true);
-    }
 
     public int GetCurrLevel()
     {
@@ -42,19 +37,21 @@ public class PlantLeaves : MonoBehaviour
        result => {
            currLeaves = result.Leaderboard[0].StatValue;
            if (updateInterface)
-               UpdateLeavesInterface();
+               UpdateLeavesInterface(result.Leaderboard[0].StatValue);
        },
        OnError);
     }
 
-    public void UpdateLeavesInterface()
+    public void UpdateLeavesInterface(int? updatedLeaves = null)
     {
+        int leaves = updatedLeaves.HasValue ? updatedLeaves.Value : currLeaves.Value;
         var currLevel = GetCurrLevel();
 
         if (currLevel >= 2)
         {
             text_level.text = "Level: Plant";
-            text_leaves.text = currLeaves.ToString() + " Leaves earned.";
+            text_leaves.text = leaves.ToString();
+            text_nextLeaves.text = "earned this cycle.";
             progress_amount.gameObject.SetActive(false);
         }
 
@@ -62,10 +59,11 @@ public class PlantLeaves : MonoBehaviour
         {
             int nextLeaves = currLevel == 1 ? 400 : 150;
             text_level.text = currLevel == 1 ? "Level: Sprout" : "Level: Seedling";
-            text_leaves.text = (nextLeaves - currLeaves).ToString() + " more Leaves to level up!";
+            text_leaves.text = (nextLeaves - leaves).ToString();
+            text_nextLeaves.text = "more to reach " + (currLevel == 1 ? "Plant" : "Sprout");
             progress_amount.gameObject.SetActive(true);
-            progress_amount.value = currLeaves.Value;
             progress_amount.maxValue = nextLeaves;
+            progress_amount.value = leaves;
         }
     }
 
