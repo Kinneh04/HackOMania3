@@ -2575,23 +2575,23 @@ MonoBehaviour:
     Name: Pot 4
   plantTypes:
   - LeavesRequired: 0
-    Thumbnail: {fileID: 21300000, guid: 669ee0f353f517046a29f044cef16d39, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 5dc7d987fc889f64193c0a515ef26b0f, type: 3}
     Mesh: {fileID: -316046109595110636, guid: c5418e3a6c5b5304e97917076c235a7c, type: 3}
     Name: Bluebells
   - LeavesRequired: 100
-    Thumbnail: {fileID: 21300000, guid: 669ee0f353f517046a29f044cef16d39, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 25fd471d29e996c42ac5ef6faf1290d0, type: 3}
     Mesh: {fileID: 2249256485575104852, guid: 77ea9a36ce2291144b38f9dcc2e1b08b, type: 3}
     Name: Yellowbells
   - LeavesRequired: 200
-    Thumbnail: {fileID: 21300000, guid: 669ee0f353f517046a29f044cef16d39, type: 3}
+    Thumbnail: {fileID: 21300000, guid: e0aea16d521e20b48bc43393fc76ee14, type: 3}
     Mesh: {fileID: -2791698471362104446, guid: 6a695da599dcaea4b9446ecd5b29bb0a, type: 3}
     Name: Fern
   - LeavesRequired: 300
-    Thumbnail: {fileID: 21300000, guid: 669ee0f353f517046a29f044cef16d39, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 8cabeb77b521de44a9e90a4b53ca39bb, type: 3}
     Mesh: {fileID: -2526252571346687298, guid: e85f1fcef6bc59d4eb17e0717eaefc83, type: 3}
     Name: Purple Flowers
   - LeavesRequired: 400
-    Thumbnail: {fileID: 21300000, guid: bb4008bce5df80d47ae5cfd1f37f941b, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 287e11fd67855b94d89977beb311adf2, type: 3}
     Mesh: {fileID: -7192798534504033248, guid: 1290d6bbd25315b458d77263d8c1ee72, type: 3}
     Name: Red Flowers
   text_selected: {fileID: 863959593}
@@ -6576,7 +6576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 55, y: -115.99994}
+  m_AnchoredPosition: {x: 55, y: -116}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1373163361
@@ -7797,7 +7797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 55, y: -115.99994}
+  m_AnchoredPosition: {x: 55, y: -116}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1547872199
