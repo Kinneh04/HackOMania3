@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using PlayFab;
 
 public class HomeUI : MonoBehaviour
 {
@@ -46,6 +47,13 @@ public class HomeUI : MonoBehaviour
         seq.Append(_spencerButton_fake.transform.DOMoveY(50, 0.3f));
         seq.Append(_spencerButton_fake.transform.DOMoveY(-50, 0.3f));
         seq.AppendCallback(() => SceneManager.LoadScene("SPencerChatScene"));
+    }
+
+    public void Logout()
+    {
+        PlayerPrefs.DeleteKey("SPGroupCustomID");
+        PlayFabClientAPI.ForgetAllCredentials();
+        SceneManager.LoadScene("LoginScene");
     }
 }
 

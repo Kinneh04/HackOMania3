@@ -185,19 +185,19 @@ public class PlantRotator : MonoBehaviour
             if ((touchDelta + varianceInDistance <= 1) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed))
             {
 
-                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + (1 * zoomSpeed), 15, 90);
+                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + (1 * zoomSpeed), 60, 125);
             }
 
             if ((touchDelta + varianceInDistance > 1) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed))
             {
 
-                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - (1 * zoomSpeed), 15, 90);
+                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - (1 * zoomSpeed), 60, 125);
             }
 
         }
 #endif
     }
-#endregion
+    #endregion
 
     /// <summary>
     /// Set the start position of initial tap
