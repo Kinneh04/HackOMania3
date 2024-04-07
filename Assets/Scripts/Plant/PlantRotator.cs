@@ -143,7 +143,7 @@ public class PlantRotator : MonoBehaviour
     {
         while (autoRotate)
         {
-            Camera.main.transform.RotateAround(_plantPos, new Vector3(0f, 1.0f, 0f), Time.deltaTime * 100f);
+            Camera.main.transform.RotateAround(_plantPos, new Vector3(0f, 1.0f, 0f), Time.deltaTime * 10f);
             yield return null;
         }
     }
