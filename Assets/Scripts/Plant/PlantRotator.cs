@@ -24,6 +24,8 @@ public class PlantRotator : MonoBehaviour
 
     Vector3 _plantPos;
 
+    private bool autoRotate = true;
+
     void Start()
     {
         _screenWidth = Screen.width;
@@ -37,6 +39,8 @@ public class PlantRotator : MonoBehaviour
         var origRot = Camera.main.transform.rotation;
         Camera.main.transform.LookAt(_plantPos);
         Camera.main.transform.rotation = origRot;
+
+        StartCoroutine(RotatePlant());
         //Camera.main.SetReplacementShader(GlobalShader, "");
     }
 
@@ -135,6 +139,15 @@ public class PlantRotator : MonoBehaviour
         return selectedObj.CompareTag("PlantPanel");
     }
 
+    private IEnumerator RotatePlant()
+    {
+        while (autoRotate)
+        {
+            Camera.main.transform.RotateAround(_plantPos, new Vector3(0f, 1.0f, 0f), Time.deltaTime * 100f);
+            yield return null;
+        }
+    }
+
     private void PinchInput()
     {
         if (!GetIsTapOnPlant())
@@ -189,6 +202,7 @@ public class PlantRotator : MonoBehaviour
     /// </summary>
     public void OnBeginTap()
     {
+        autoRotate = false;
         _startPos = Input.mousePosition;
     }
 
@@ -219,6 +233,7 @@ public class PlantRotator : MonoBehaviour
     /// </summary>
     public void OnEndTap()
     {
+        autoRotate = true;
         _inputVector = Vector3.zero;
     }
 }

@@ -38,7 +38,7 @@ public class PlantCustomiser : MonoBehaviour
             tabs[i].GetComponent<Button>().onClick.AddListener(() => OnSwitchTabs(tmp));
         }
 
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     #region Interface

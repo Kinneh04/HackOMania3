@@ -17,6 +17,7 @@ public class PopupManager : MonoBehaviour
             onContinue();
         onClose = onContinue = null;
         gameObject.SetActive(false);
+        _forgetPanel.SetActive(false);
     }
 
     public void OnClose()
@@ -41,7 +42,7 @@ public class PopupManager : MonoBehaviour
         onClose = closeAction;
         onContinue = continueAction;
 
-        _forgetPanel.SetActive(showForget);
+        //_forgetPanel.SetActive(showForget);
 
         gameObject.SetActive(true);
     }

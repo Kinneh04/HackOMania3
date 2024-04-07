@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlantPanelManager : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class PlantPanelManager : MonoBehaviour
     [Header("Panel Switching")]
     [SerializeField] List<PlantPanel> _panels = new List<PlantPanel>();
     [SerializeField] PlantPanelType _startPanel = PlantPanelType.GreenUp;
+    public Button buttonBackGreenup;
 
     private PlantPanel _currPanel;
     public PlantPanel CurrPanel { get => _currPanel; }
+
+    bool isMidSwitch = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,38 +58,46 @@ public class PlantPanelManager : MonoBehaviour
         var currSize = plantViewport.sizeDelta;
         var newPanel = FindPanelOfType((PlantPanelType)System.Enum.Parse(typeof(PlantPanelType), type));
 
+        if (isMidSwitch || newPanel == _currPanel)
+            return;
+
         if (newPanel != null)
         {
+            isMidSwitch = true;
             switch (newPanel.type)
             {
                 case PlantPanelType.GreenUp:
-                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1100f), 0.5f);
+                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1100f), 0.5f).OnComplete(() => isMidSwitch = false);
                     infoPanel.SetActive(true);
                     extraInfo.SetActive(false);
+                    buttonBackGreenup.gameObject.SetActive(true);
                     title.text = "GreenUp";
                     break;
 
                 case PlantPanelType.MyPlant:
-                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1700f), 0.5f);
+                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1700f), 0.5f).OnComplete(() => isMidSwitch = false);
                     infoPanel.SetActive(true);
                     extraInfo.SetActive(true);
+                    buttonBackGreenup.gameObject.SetActive(false);
                     title.text = "My Plant";
                     break;
 
                 case PlantPanelType.Customisation:
-                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1100f), 0.5f);
+                    plantViewport.DOSizeDelta(new Vector2(currSize.x, 1100f), 0.5f).OnComplete(() => isMidSwitch = false);
                     infoPanel.SetActive(false);
                     title.text = "Plant Customisation";
+                    buttonBackGreenup.gameObject.SetActive(false);
                     break;
 
                 default:
+                    isMidSwitch = false;
                     break;
             }
 
             var seq = DOTween.Sequence()
                 .Append(_currPanel.panelObj.GetComponent<CanvasGroup>().DOFade(0, 0.25f).OnComplete(() => { _currPanel.panelObj.SetActive(false); newPanel.panelObj.SetActive(true); }))
                 .Append(newPanel.panelObj.GetComponent<CanvasGroup>().DOFade(1.0f, 0.25f))
-                .OnComplete(() =>
+                .AppendCallback(() =>
                 {
                     _currPanel = newPanel;
                 });
@@ -103,6 +115,11 @@ public class PlantPanelManager : MonoBehaviour
     public void GoToLeaderboard()
     {
         SceneManager.LoadScene("Leaderboard");
+    }
+
+    public void GoToHome()
+    {
+        SceneManager.LoadScene("HomePage");
     }
 }
 

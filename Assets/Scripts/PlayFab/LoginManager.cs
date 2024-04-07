@@ -136,7 +136,7 @@ public class LoginManager : MonoBehaviour
     private IEnumerator LoadGameSceneAsync()
     {
         splashManager.SetLoading(true);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("PlantScene");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("HomePage");
 
         while (!asyncLoad.isDone)
             yield return null;
