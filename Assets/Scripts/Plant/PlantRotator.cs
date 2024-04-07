@@ -25,6 +25,7 @@ public class PlantRotator : MonoBehaviour
     Vector3 _plantPos;
 
     private bool autoRotate = true;
+    private IEnumerator rotatePlantCoroutine;
 
     void Start()
     {
@@ -40,7 +41,8 @@ public class PlantRotator : MonoBehaviour
         Camera.main.transform.LookAt(_plantPos);
         Camera.main.transform.rotation = origRot;
 
-        StartCoroutine(RotatePlant());
+        rotatePlantCoroutine = RotatePlant();
+        StartCoroutine(rotatePlantCoroutine);
         //Camera.main.SetReplacementShader(GlobalShader, "");
     }
 
@@ -141,6 +143,7 @@ public class PlantRotator : MonoBehaviour
 
     private IEnumerator RotatePlant()
     {
+        yield return new WaitForSeconds(0.25f);
         while (autoRotate)
         {
             Camera.main.transform.RotateAround(_plantPos, new Vector3(0f, 1.0f, 0f), Time.deltaTime * 10f);
@@ -234,6 +237,9 @@ public class PlantRotator : MonoBehaviour
     public void OnEndTap()
     {
         autoRotate = true;
+        StopCoroutine(rotatePlantCoroutine);
+        rotatePlantCoroutine = RotatePlant();
+        StartCoroutine(rotatePlantCoroutine);
         _inputVector = Vector3.zero;
     }
 }
