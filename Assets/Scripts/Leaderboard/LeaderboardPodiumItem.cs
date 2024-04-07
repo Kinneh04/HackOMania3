@@ -10,15 +10,19 @@ public class LeaderboardPodiumItem : LeaderboardItem
     [SerializeField] Image profilePic;
     [SerializeField] TMP_Text text_nextLevel;
 
-    public override void Initalize(PlayerLeaderboardEntry leaderboardEntry)
+    public override void Initalize(PlayerLeaderboardEntry leaderboardEntry, Dictionary<string, string> data, LeaderboardManager manager)
     {
         int currLevel = GetCurrLevel(leaderboardEntry.StatValue);
 
-        text_name.text = leaderboardEntry.DisplayName;
+        UserData = data;
+        text_name.text = Name = leaderboardEntry.DisplayName;
         text_leaves.text = currLevel == 2
             ? leaderboardEntry.StatValue.ToString()
             : ((currLevel == 1 ? 400 : 150) - leaderboardEntry.StatValue).ToString();
         text_nextLevel.text = currLevel == 2 ? "" : " to " + (currLevel == 1 ? "Plant" : "Sprout");
+        Leaves = leaderboardEntry.StatValue;
+
+        GetComponent<Button>().onClick.AddListener(() => manager.OnPressItem(this));
     }
 
     public int GetCurrLevel(int currLeaves)

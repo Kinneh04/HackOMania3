@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -81,14 +82,53 @@ public class LeaderboardManager : MonoBehaviour
 
     private void UpdatePodiumItem(PlayerLeaderboardEntry leaderboardEntry, int index)
     {
+        var obj = podiumItems[index].gameObject;
         podiumItems[index].gameObject.SetActive(true);
-        podiumItems[index].Initalize(leaderboardEntry);
+        CloudScriptManager.Instance.ExecGetUserDataAnotherPlayer(
+            leaderboardEntry.PlayFabId,
+            new List<string> { "CurrPot", "CurrPlant" },
+            result =>
+            {
+                var keys = ((PlayFab.Json.JsonObject)result.FunctionResult).Keys;
+                var values = ((PlayFab.Json.JsonObject)result.FunctionResult).Values;
+
+                Dictionary<string, string> userData = new() { };
+                for (int i = 0; i < keys.Count; ++i)
+                {
+                    userData.Add(
+                        keys.ElementAt(i),
+                        ((PlayFab.Json.JsonObject)values.ElementAt(i)).Values.ElementAt(0).ToString()
+                    ); ;
+                }
+                podiumItems[index].Initalize(leaderboardEntry, userData, this);
+            },
+        OnError
+        );
     }
 
     private void GetUserDataAndSpawnItem(PlayerLeaderboardEntry leaderboardEntry)
     {
         GameObject obj = Instantiate(itemPrefab, leaderboardContent.transform);
-        obj.GetComponent<LeaderboardItem>().Initalize(leaderboardEntry);
+        CloudScriptManager.Instance.ExecGetUserDataAnotherPlayer(
+            leaderboardEntry.PlayFabId,
+            new List<string> { "CurrPot", "CurrPlant"},
+            result =>
+            {
+                var keys = ((PlayFab.Json.JsonObject)result.FunctionResult).Keys;
+                var values = ((PlayFab.Json.JsonObject)result.FunctionResult).Values;
+
+                Dictionary<string, string> userData = new() { };
+                for (int i = 0; i < keys.Count; ++i)
+                {
+                    userData.Add(
+                        keys.ElementAt(i),
+                        ((PlayFab.Json.JsonObject)values.ElementAt(i)).Values.ElementAt(0).ToString()
+                    ); ;
+                }
+                obj.GetComponent<LeaderboardItem>().Initalize(leaderboardEntry, userData, this);
+            },
+        OnError
+        );
         currLeaderboardItems.Add(obj);
     }
 
@@ -173,6 +213,15 @@ public class LeaderboardManager : MonoBehaviour
             GetGlobalLeaderboard();
         else
             GetFriendsLeaderboard();
+    }
+
+    public void OnPressItem(LeaderboardItem item)
+    {
+        StaticPlantClass.OtherUserName = item.Name;
+        StaticPlantClass.OtherUserData = item.UserData;
+        StaticPlantClass.OtherLeaves = item.Leaves;
+
+        SceneManager.LoadScene("OtherPlantScene");
     }
 
     public void OnClickBack()
