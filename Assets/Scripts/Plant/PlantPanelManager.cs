@@ -106,6 +106,9 @@ public class PlantPanelManager : MonoBehaviour
 
     public void GoMyPlantFromGreenUp()
     {
+        if (_currPanel == null)
+            return;
+
         if (_currPanel.type != PlantPanelType.GreenUp)
             return;
 
