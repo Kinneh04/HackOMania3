@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using DG.Tweening;
 using System.IO;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Chatbot : MonoBehaviour
 {
@@ -141,6 +143,7 @@ public class Chatbot : MonoBehaviour
         seq.Append(SPencerSprite.GetComponent<RectTransform>().DOAnchorPosY(50, 0.05f));
         seq.Append(SPencerSprite.GetComponent<RectTransform>().DOAnchorPosY(5, 0.5f));
         seq.AppendCallback(() => GreetUser());
+        Application.targetFrameRate = 120;
     }
 
 
@@ -261,8 +264,8 @@ public class Chatbot : MonoBehaviour
         SpeechBubblePrefab BubblePrefab = GO.GetComponent<SpeechBubblePrefab>();
         BubblePrefab.image.sprite = C.ChallengeSprite;
         InstantiatedTextboxes.Add(GO);
-        BubblePrefab.image.GetComponent<Button>().onClick.AddListener(delegate { BubblePrefab.RedirectToChallenge(); });
         BubblePrefab.SavedChallenge = C;
+        BubblePrefab.image.GetComponent<Button>().onClick.AddListener(delegate { GoToArticle(BubblePrefab.SavedChallenge); });
         BubblePrefab.mainChatbot = this;
         BubblePrefab.typewrite = true;
         BubblePrefab.OnDisplaySpeech(ExtractStringAfterSeparator(s));
@@ -303,6 +306,11 @@ public class Chatbot : MonoBehaviour
     {
         ArticleObject.SetActive(true);
         articleManager.LoadChallenge(C);
+    }
+
+    public void ReturnToPlant()
+    {
+        SceneManager.LoadScene("HomePage");
     }
 
     public void SendArticleWithSummarizeButton(string title, GameObject Buttonprefab, Challenge C, Sprite iconSprite)

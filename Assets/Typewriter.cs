@@ -16,6 +16,7 @@ public class Typewriter : MonoBehaviour
     public HomeUI homeUI;
 
     public bool doneTutorial;
+    public bool Dev = true;
 
     private void OnDestroy()
     {
@@ -26,7 +27,7 @@ public class Typewriter : MonoBehaviour
     private void Start()
     {
         int i = PlayerPrefs.GetInt("DoneTutorial");
-        if (Tutorials.Count > 0 && i == 0)
+        if (Tutorials.Count > 0 && i == 0 || Dev)
         {
             StartCoroutine(TypeText(Tutorials[currentTextIndex].TutorialString));
         }

@@ -64,7 +64,7 @@ public class Chatbot_ST : MonoBehaviour
     public void OnReplyWithClosestMatchedArticles()
     {
         challengesManager.ReturnMatchedArticles(chatBotMain.temptext);
-        if (challengesManager.QueriedChallenges.Count <= 0)
+        if (challengesManager.QueriedArticles.Count <= 0)
         {
             chatBotMain.SendBotMessage("Sorry, I couldnt find any articles that match what you are looking for. Please try a different topic, or try again later.");
         }
@@ -75,7 +75,7 @@ public class Chatbot_ST : MonoBehaviour
             string responseText = "Here is a list of articles that you might find interesting!\nClick the picture to view the article. Remember, you gain leaves for completing a quiz after viewing the article, or you can ask me to summarize the article for you!";
             chatBotMain.SendBotMessage(responseText);
 
-            chatBotMain.SendMultipleArticles(challengesManager.QueriedChallenges);
+            chatBotMain.SendMultipleArticles(challengesManager.QueriedArticles);
         }
     }
 
@@ -108,7 +108,7 @@ public class Chatbot_ST : MonoBehaviour
     }
     public void RespondWithleaderboard()
     {
-        chatBotMain.SendMessageWithCustomButton("You are currently 3rd Place in the global leaderboard, congrats! Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { chatBotMain.GoToLeaderboard(); }, LeaderboardSprite);
+        chatBotMain.SendMessageWithCustomButton("Click the button below to view the leaderboard!", LeaderboardButtonPrefab, "View Leaderboard", delegate { SceneManager.LoadScene("Leaderboard"); }, LeaderboardSprite);
     }
 
     public void RespondWithPlantRedirect()

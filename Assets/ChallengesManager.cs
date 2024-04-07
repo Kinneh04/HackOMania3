@@ -49,7 +49,7 @@ public class ChallengesManager : MonoBehaviour
                 if (response.Contains(ss))
                 {
                     strings.Add(s);
-                    QueriedChallenges.Add(C);
+                    QueriedArticles.Add(C);
                     break;
                 }
             }
