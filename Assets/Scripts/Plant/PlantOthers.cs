@@ -15,10 +15,12 @@ public class PlantOthers : MonoBehaviour
 
     [SerializeField] TMP_Text text_name, text_leaves, text_level, text_nextLeaves;
     [SerializeField] Slider progress_amount;
+    [SerializeField] PlantLeaves plantLeaves;
     int? currLeaves = null;
 
     private void Start()
     {
+        currLeaves = StaticPlantClass.OtherLeaves;
         UpdatePlant();
         UpdateLeaves();
     }
@@ -26,14 +28,14 @@ public class PlantOthers : MonoBehaviour
     private void UpdatePlant()
     {
         text_name.text = StaticPlantClass.OtherUserName + "'s Pot";
-        pot.mesh = potTypes[int.Parse(StaticPlantClass.OtherUserData["CurrPot"])].Mesh;
-        plant.mesh = plantTypes[int.Parse(StaticPlantClass.OtherUserData["CurrPlant"])].Mesh;
+        pot.mesh = potTypes[int.Parse(StaticPlantClass.OtherUserData["CurrPot"])].Meshes[0];
+        plant.mesh = plantTypes[int.Parse(StaticPlantClass.OtherUserData["CurrPlant"])].Meshes[GetCurrLevel()];
     }
 
     int GetCurrLevel()
     {
         if (!currLeaves.HasValue)
-            return -1;
+            return 0;
 
         if (currLeaves >= 400)
             return 2; // Plant
@@ -46,7 +48,6 @@ public class PlantOthers : MonoBehaviour
 
     private void UpdateLeaves()
     {
-        currLeaves = StaticPlantClass.OtherLeaves;
         var currLevel = GetCurrLevel();
 
         if (currLevel >= 2)

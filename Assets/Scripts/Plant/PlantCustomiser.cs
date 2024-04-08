@@ -23,6 +23,7 @@ public class PlantCustomiser : MonoBehaviour
     int defaultPot = 0, defaultPlant = 0;
     CustomiseButton currButton = null;
     [SerializeField] PlantPanelManager panelManager;
+    [SerializeField] PlantLeaves plantLeaves;
 
     // Start is called before the first frame update
     void Start()
@@ -92,13 +93,13 @@ public class PlantCustomiser : MonoBehaviour
             if (result.Data != null && result.Data.ContainsKey("CurrPot"))
             {
                 defaultPot = currPot = int.Parse(result.Data["CurrPot"].Value);
-                pot.mesh = potTypes[currPot].Mesh;
+                pot.mesh = potTypes[currPot].Meshes[0];
             }
 
             if (result.Data != null && result.Data.ContainsKey("CurrPlant"))
             {
                 defaultPlant = currPlant = int.Parse(result.Data["CurrPlant"].Value);
-                plant.mesh = plantTypes[currPlant].Mesh;
+                plant.mesh = plantTypes[currPlant].Meshes[plantLeaves.GetCurrLevel()];
             }
 
             gameObject.SetActive(true);
@@ -219,12 +220,12 @@ public class PlantCustomiser : MonoBehaviour
         switch(currTab)
         {
             case 0:
-                pot.mesh = potTypes[button.CustomizableInfo.Index].Mesh;
+                pot.mesh = potTypes[button.CustomizableInfo.Index].Meshes[0];
                 currPot = button.CustomizableInfo.Index;
                 break;
 
             case 1:
-                plant.mesh = plantTypes[button.CustomizableInfo.Index].Mesh;
+                plant.mesh = plantTypes[button.CustomizableInfo.Index].Meshes[plantLeaves.GetCurrLevel()];
                 currPlant = button.CustomizableInfo.Index;
                 break;
 
@@ -243,8 +244,8 @@ public class PlantCustomiser : MonoBehaviour
     {
         if (resetPlant)
         {
-            pot.mesh = potTypes[defaultPot].Mesh;
-            plant.mesh = plantTypes[defaultPlant].Mesh;
+            pot.mesh = potTypes[defaultPot].Meshes[0];
+            plant.mesh = plantTypes[defaultPlant].Meshes[plantLeaves.GetCurrLevel()];
         }
 
         panelManager.OnSwitchPanel("MyPlant");
@@ -256,6 +257,6 @@ public class CustomizableTypes
 {
     public int LeavesRequired = 0;
     public Sprite Thumbnail;
-    public Mesh Mesh;
+    public List<Mesh> Meshes;
     public string Name;
 }

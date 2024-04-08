@@ -26,6 +26,7 @@ public class PlantRotator : MonoBehaviour
 
     private bool autoRotate = true;
     private IEnumerator rotatePlantCoroutine;
+    private float heldElapsed = 0f;
 
     void Start()
     {
@@ -205,9 +206,6 @@ public class PlantRotator : MonoBehaviour
     /// </summary>
     public void OnBeginTap()
     {
-        if (GetIsTapOnPlant())
-            autoRotate = false;
-
         _startPos = Input.mousePosition;
     }
 
@@ -219,6 +217,16 @@ public class PlantRotator : MonoBehaviour
     {
         /*if (!GameManager.Instance.GetIsPlayingOrProcessing())
             return;*/
+
+        if (autoRotate)
+        {
+            heldElapsed += Time.deltaTime;
+            if (heldElapsed > 0.25f)
+            {
+                autoRotate = false;
+                heldElapsed = 0f;
+            }
+        }
 
         if (!GetIsTapOnPlant())
         {
@@ -239,6 +247,7 @@ public class PlantRotator : MonoBehaviour
     public void OnEndTap()
     {
         autoRotate = true;
+        heldElapsed = 0f;
         StopCoroutine(rotatePlantCoroutine);
         rotatePlantCoroutine = RotatePlant();
         StartCoroutine(rotatePlantCoroutine);

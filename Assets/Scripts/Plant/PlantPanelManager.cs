@@ -24,7 +24,6 @@ public class PlantPanelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindPanelOfType(PlantPanelType.Customisation).panelObj.GetComponent<PlantCustomiser>().UpdatePlant();
         FindPanelOfType(PlantPanelType.GreenUp).panelObj.GetComponent<PlantLeaves>().UpdateLeavesCount(true);
         // Set all panels except for starting panel to inactive
         foreach (var panel in _panels)

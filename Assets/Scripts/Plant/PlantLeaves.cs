@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
-using System.Linq;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class PlantLeaves : MonoBehaviour
 {
     [SerializeField] TMP_Text text_leaves, text_level, text_nextLeaves;
     [SerializeField] Slider progress_amount;
+    [SerializeField] PlantCustomiser plantCustomiser;
     int? currLeaves = null;
+    int oldLevel = -1;
 
     public int GetCurrLevel()
     {
@@ -30,6 +30,7 @@ public class PlantLeaves : MonoBehaviour
     public void UpdateLeavesCount(bool updateInterface = false)
     {
         text_leaves.text = "...";
+        oldLevel = GetCurrLevel();
         PlayFabClientAPI.GetLeaderboardAroundPlayer(new GetLeaderboardAroundPlayerRequest()
         {
             StatisticName = "Leaves",
@@ -66,6 +67,9 @@ public class PlantLeaves : MonoBehaviour
             progress_amount.maxValue = nextLeaves;
             progress_amount.value = leaves;
         }
+
+        if (currLevel != oldLevel)
+            plantCustomiser.UpdatePlant();
     }
 
     public void AddLeaves(int amount)
